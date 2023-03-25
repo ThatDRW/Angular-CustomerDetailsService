@@ -1,8 +1,18 @@
 <p>register-user works!</p>
 
-<table>
-  <tr>
-    <td>Username:</td>
-    <td><input [(ngModel)]="user.username" placeholder="Username"/></td>
-  </tr>
-</table>
+<form action="/user/register">
+
+  <table>
+    <tr>
+      <td><label for="username">Username:</label></td>
+      <td><input [(ngModel)]="user.username" id="username" placeholder="Username"/></td>
+    </tr>
+    <tr>
+      <td><label for="password">Password:</label></td>
+      <td><input [(ngModel)]="user.password" id="password" placeholder="Password"/></td>
+    </tr>
+  </table>
+
+  <input type="submit" value="Register"/>
+</form>
+
