@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { User } from '../entity/User';
 
 @Component({
   selector: 'app-registeruser',
   templateUrl: './registeruser.component.html',
   styleUrls: ['./registeruser.component.css']
 })
-export class RegisteruserComponent {
+export class RegisteruserComponent  implements OnInit {
 
-  student = "Student Boogedy reporting for doogedy.";
+  user : User = {id: 1, username: "user", password: "pass"}
+
+  constructor() { }
+
+  ngOnInit(): void {
+
+  }
 
 }
