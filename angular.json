@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "customerdetailsservice-angular": {
+    "angular-customerdetailsservice": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/customerdetailsservice-angular",
+            "outputPath": "dist/angular-customerdetailsservice",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "customerdetailsservice-angular:build:production"
+              "browserTarget": "angular-customerdetailsservice:build:production"
             },
             "development": {
-              "browserTarget": "customerdetailsservice-angular:build:development"
+              "browserTarget": "angular-customerdetailsservice:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "customerdetailsservice-angular:build"
+            "browserTarget": "angular-customerdetailsservice:build"
           }
         },
         "test": {
