@@ -27,7 +27,7 @@ export class LoginUserComponent implements OnInit {
 
         console.log("Attempting login for user: " + this.user.username);
 
-        this.userService.registerUser(data)
+        this.userService.loginUser(data)
         .subscribe({
             next: (res) => {
                 console.log(res);
