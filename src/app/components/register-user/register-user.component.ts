@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 import { User } from '../../entity/User';
 
 @Component({
@@ -9,5 +10,13 @@ import { User } from '../../entity/User';
 export class RegisterUserComponent {
 
   user:User = {username:"",password:""};
+
+
+  constructor(private userService: UserService) {
+  }
+
+  registerUser() {
+    this.userService.registerUser(this.user);
+  }
 
 }
