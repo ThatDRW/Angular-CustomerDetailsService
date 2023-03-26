@@ -1,1 +1,21 @@
-<p>login-user works!</p>
+<div *ngIf="haserror" class="alert alert-danger">{{errormessage}}</div>
+<div *ngIf="submitted" class="alert alert-success">User added succesfully. You can now login.</div>
+
+<div *ngIf="!submitted">
+    <table>
+        <tr>
+        <td><label for="username">Username:</label></td>
+        <td><input [(ngModel)]="user.username" placeholder="Username"/></td>
+        <td>{{user.username}}</td>
+        </tr>
+        <tr>
+            <td><label for="password">Password:</label></td>
+            <td><input [(ngModel)]="user.password" placeholder="Password"/></td>
+            <td>{{user.password}}</td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Login" (click)="loginUser()"/>
+</div>
+
+<div *ngIf="submitted && !haserror">Go to User Login: </div>
