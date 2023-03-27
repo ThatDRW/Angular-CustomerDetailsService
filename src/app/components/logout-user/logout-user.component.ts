@@ -21,7 +21,7 @@ export class LogoutUserComponent implements OnInit {
         this.signedOut = true;
         setTimeout(() => {
             window.location.href="http://localhost:4200";
-          }, 6000);
+          }, 5000);
     }
 
 }
