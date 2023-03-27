@@ -11,6 +11,8 @@
         <ul class="nav navbar-nav navbar-right">
             <li *ngIf="!isLoggedIn" class="nav-item"><a routerLink="user/register" class="nav-link"> Register</a></li>
             <li *ngIf="!isLoggedIn" class="nav-item"><a routerLink="login" class="nav-link"> Login</a></li>
+            <li *ngIf="isLoggedIn" style="color: white"><a routerLink="#" class="nav-link"> Welcome, {{loggedInUsername}}</a></li>
+            <li *ngIf="isLoggedIn" class="nav-item"><a routerLink="" class="nav-link"> Logout</a></li>
         </ul>
     </div>
 </nav>

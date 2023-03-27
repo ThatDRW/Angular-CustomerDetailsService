@@ -13,10 +13,12 @@ export class NavigationBarComponent implements OnInit {
     ) { }
 
     isLoggedIn = false;
+    loggedInUsername = '';
 
     ngOnInit(): void {
         if (this.tokenStorage.getToken()) {
             this.isLoggedIn = true;
+            this.loggedInUsername = this.tokenStorage.getUser().username;
         }
     }
 
