@@ -42,6 +42,10 @@ export class LoginUserComponent implements OnInit {
             next: (res) => {
                 console.log(res.headers.get("authorization"));
                 this.debugToken = res.headers.get('authorization');
+                this.tokenStorage.saveToken(res.headers.get('authorization'));
+                this.tokenStorage.saveUser({username: this.user.username});
+
+
                 console.log(res);
                 this.haserror = false;
                 this.submitted = true;
