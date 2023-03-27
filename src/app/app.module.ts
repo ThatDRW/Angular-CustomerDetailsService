@@ -10,6 +10,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 
+import { AuthInterceptor } from './helpers/auth.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,7 @@ import { LoginUserComponent } from './components/login-user/login-user.component
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
