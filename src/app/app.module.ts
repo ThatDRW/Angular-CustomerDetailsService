@@ -11,6 +11,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { LoginUserComponent } from './components/login-user/login-user.component';
 
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { LogoutUserComponent } from './components/logout-user/logout-user.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     RegisterUserComponent,
     LandingComponent,
     NavigationBarComponent,
-    LoginUserComponent
+    LoginUserComponent,
+    LogoutUserComponent
   ],
   imports: [
     BrowserModule,
