@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
@@ -20,7 +21,8 @@ export class LoginUserComponent implements OnInit {
 
     constructor(
         private userService: UserService,
-        private tokenStorage: TokenStorageService
+        private tokenStorage: TokenStorageService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -49,7 +51,9 @@ export class LoginUserComponent implements OnInit {
                 console.log(res);
                 this.haserror = false;
                 this.submitted = true;
-
+                setTimeout(() => {
+                    this.router.navigate(['']);
+                  }, 6000);
                 // window.location.reload();
             },
             error: (e) => {
