@@ -52,7 +52,8 @@ export class LoginUserComponent implements OnInit {
                 this.haserror = false;
                 this.submitted = true;
                 setTimeout(() => {
-                    this.router.navigate(['']);
+                    // this.router.navigate(['']);
+                    window.location.href="http://localhost:4200";
                   }, 6000);
             },
             error: (e) => {

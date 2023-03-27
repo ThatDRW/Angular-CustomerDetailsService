@@ -20,7 +20,7 @@ export class LogoutUserComponent implements OnInit {
         this.tokenStorage.signOut();
         this.signedOut = true;
         setTimeout(() => {
-            this.router.navigate(['']);
+            window.location.href="http://localhost:4200";
           }, 6000);
     }
 
