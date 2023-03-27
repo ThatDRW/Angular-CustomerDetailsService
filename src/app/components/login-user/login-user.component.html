@@ -1,5 +1,5 @@
 <div *ngIf="haserror" class="alert alert-danger">{{errormessage}}</div>
-<div *ngIf="submitted" class="alert alert-success">User logged in succesfully!</div>
+<div *ngIf="submitted" class="alert alert-success"><b>User logged in succesfully!</b><br/>You will be redirected shortly.</div>
 
 <div *ngIf="!submitted">
     <table>
@@ -18,4 +18,7 @@
     <input type="submit" value="Login" (click)="loginUser()"/>
 </div>
 
-<div *ngIf="submitted && !haserror">You are now logged in! {{debugToken}}</div> 
+<div *ngIf="submitted && !haserror">{{debugToken}}
+    <br/><br/>
+    You will be redirected to the Landing page.
+</div>
