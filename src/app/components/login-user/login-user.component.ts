@@ -49,6 +49,8 @@ export class LoginUserComponent implements OnInit {
                 console.log(res);
                 this.haserror = false;
                 this.submitted = true;
+
+                window.location.reload();
             },
             error: (e) => {
                 console.error(e);
