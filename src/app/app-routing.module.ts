@@ -5,12 +5,15 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { LogoutUserComponent } from './components/logout-user/logout-user.component';
+import { AddCustomerComponent } from './components/add-customer/add-customer.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'user/register', component: RegisterUserComponent },
   { path: 'login', component: LoginUserComponent },
-  { path: 'logout', component: LogoutUserComponent }
+  { path: 'logout', component: LogoutUserComponent },
+
+  { path: 'customer/add', component: AddCustomerComponent }
 ];
 
 @NgModule({
