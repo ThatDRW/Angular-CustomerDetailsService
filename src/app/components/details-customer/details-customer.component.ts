@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
 
@@ -17,7 +18,7 @@ export class DetailsCustomerComponent implements OnInit {
         address: undefined
     };
 
-    getId = '';
+    getId : string | null = '';
     hasError = false;
     errorMessage = '';
     isViewingCustomer = false;
@@ -25,9 +26,19 @@ export class DetailsCustomerComponent implements OnInit {
     submitted = false;
 
 
-    constructor(private customerService: CustomerService) { }
+    constructor(
+        private customerService: CustomerService,
+        private route: ActivatedRoute
+    ) { }
 
     ngOnInit() : void {
+        if (this.route.snapshot.paramMap.has('id')) {
+            const id = this.route.snapshot.paramMap.get('id');
+            console.log("Detected id in route paramMap: " + id);
+
+            this.getId = id;
+            this.getCustomer();
+        }
 
     }
 

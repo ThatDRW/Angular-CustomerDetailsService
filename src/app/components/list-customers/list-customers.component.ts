@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
@@ -20,7 +21,10 @@ export class ListCustomersComponent implements OnInit {
     customerList = undefined;
 
 
-    constructor(private customerService : CustomerService) { }
+    constructor(
+        private customerService : CustomerService,
+        private router : Router
+    ) { }
 
     ngOnInit(): void {
         if (this.viewAll) {
@@ -48,9 +52,10 @@ export class ListCustomersComponent implements OnInit {
             });
     }
 
-    setActiveCustomer(data : any, index : number) : void {
+    showCustomerDetails(data : any, index : number) : void {
         this.currentIndex = index;
-        console.log('Boop ' + index)
+        console.log('Boop ' + data.id)
+        this.router.navigate(["customer/get/" + data.id]);
     }
 
 }

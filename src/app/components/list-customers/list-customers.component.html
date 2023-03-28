@@ -13,7 +13,7 @@
             </tr>
             <tr class=""
                 *ngFor="let customer of customerList; let i = index"
-                (click)="setActiveCustomer(customer, i)" >
+                (click)="showCustomerDetails(customer, i)" >
 
                 <td>{{customer.id}}</td>
                 <td>{{customer.firstName}}</td>

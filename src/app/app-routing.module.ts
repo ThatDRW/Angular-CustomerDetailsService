@@ -19,6 +19,7 @@ const routes: Routes = [
 
   { path: 'customer/add', component: AddCustomerComponent },
   { path: 'customer/get', component: DetailsCustomerComponent },
+  { path: 'customer/get/:id', component: DetailsCustomerComponent },
   { path: 'customer/all', component: AllCustomersComponent },
   { path: 'customer/find', component: FindCustomerComponent },
 ];
