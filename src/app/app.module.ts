@@ -12,6 +12,7 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { LogoutUserComponent } from './components/logout-user/logout-user.component';
+import { AddCustomerComponent } from './components/add-customer/add-customer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LogoutUserComponent } from './components/logout-user/logout-user.compon
     LandingComponent,
     NavigationBarComponent,
     LoginUserComponent,
-    LogoutUserComponent
+    LogoutUserComponent,
+    AddCustomerComponent
   ],
   imports: [
     BrowserModule,
