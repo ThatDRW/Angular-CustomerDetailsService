@@ -6,6 +6,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { LogoutUserComponent } from './components/logout-user/logout-user.component';
 import { AddCustomerComponent } from './components/add-customer/add-customer.component';
+import { DetailsCustomerComponent } from './components/details-customer/details-customer.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginUserComponent },
   { path: 'logout', component: LogoutUserComponent },
 
-  { path: 'customer/add', component: AddCustomerComponent }
+  { path: 'customer/add', component: AddCustomerComponent },
+  { path: 'customer/get', component: DetailsCustomerComponent },
 ];
 
 @NgModule({
