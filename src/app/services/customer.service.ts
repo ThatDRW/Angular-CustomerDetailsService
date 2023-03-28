@@ -30,6 +30,9 @@ export class CustomerService {
         return this.http.get<Customer>(this.baseUrl + "/" + id);
     }
 
+    getAllCustomers(): Observable<any> {
+        return this.http.get<Array<Customer>>(this.baseUrl + "/all");
+    }
 
 
     public static datafyCustomer(customer:Customer, includeId:boolean) {
