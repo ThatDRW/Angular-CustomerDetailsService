@@ -13,6 +13,7 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { LogoutUserComponent } from './components/logout-user/logout-user.component';
 import { AddCustomerComponent } from './components/add-customer/add-customer.component';
+import { DetailsCustomerComponent } from './components/details-customer/details-customer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddCustomerComponent } from './components/add-customer/add-customer.com
     NavigationBarComponent,
     LoginUserComponent,
     LogoutUserComponent,
-    AddCustomerComponent
+    AddCustomerComponent,
+    DetailsCustomerComponent
   ],
   imports: [
     BrowserModule,
