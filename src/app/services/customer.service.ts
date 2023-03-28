@@ -34,6 +34,10 @@ export class CustomerService {
         return this.http.get<Array<Customer>>(this.baseUrl + "/all");
     }
 
+    findCustomers(query: string): Observable<any> {
+        return this.http.get<Array<Customer>>(this.baseUrl + "/find/" + query)
+    }
+
 
     /*/* Demo Methods
     /*
