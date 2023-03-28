@@ -3,18 +3,25 @@
 <div class="list row">
     <div class="col-md-6">
       <h2>All Customers</h2>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let customer of customerList; let i = index"
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Address</th>
+            </tr>
+            <tr class=""
+                *ngFor="let customer of customerList; let i = index" >
+                (click)="setActiveCustomer(customer, i)">
 
-        >
-        <!--[class.active]="i == currentIndex"
-          (click)="setActiveTutorial(tutorial, i)"-->
-
-          {{ customer.firstName }}
-        </li>
-      </ul>
+                <td>{{customer.id}}</td>
+                <td>{{customer.firstName}}</td>
+                <td>{{customer.lastName}}</td>
+                <td>{{customer.age}}</td>
+                <td>{{customer.address}}</td>
+            </tr>
+        </table>
     </div>
     <!-- <div class="col-md-6">
       <app-tutorial-details

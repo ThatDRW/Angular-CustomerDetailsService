@@ -9,6 +9,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 export class ListCustomersComponent implements OnInit {
 
     customerList = undefined;
+    currentIndex : number | undefined = undefined;
 
     hasError = false;
     errorMessage = '';
@@ -20,7 +21,12 @@ export class ListCustomersComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.viewAll) {
-            this.customerService.getAllCustomers()
+            this.getAllCustomers();
+        }
+    }
+
+    getAllCustomers() : void {
+        this.customerService.getAllCustomers()
             .subscribe({
                 next: (res) => {
                     console.log(res);
@@ -37,11 +43,11 @@ export class ListCustomersComponent implements OnInit {
                     this.errorMessage = e.error.status + " " + e.error.title;
                 }
             });
-        }
     }
 
-    getAllCustomers() : void {
-
+    setActiveCustomer(data : any, index : number) : void {
+        this.currentIndex = index;
+        console.log('Boop ' + index)
     }
 
 }
