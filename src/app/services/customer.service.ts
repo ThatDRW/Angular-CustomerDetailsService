@@ -35,6 +35,18 @@ export class CustomerService {
     }
 
 
+    /*/* Demo Methods
+    /*
+    Proper naming conventions would have made datafyCustomer and custofyData
+    methods obsolete in the case of this project. They are just here to show
+    a possibly use-case for such 'conversion' methods. In case of connecting
+    to exteral APIs, these can be implemented as 'Adaptors' to convert from-
+    and to our own internal data structure and the external data structure.
+
+    The implementation below also includes a boolean parameter includeId.
+    This is used to differentiate between 'Adding New Customer' requests,
+    and 'Update Existing Customer' ones.
+    */
     public static datafyCustomer(customer:Customer, includeId:boolean) {
         if (includeId) {
             const data = {
