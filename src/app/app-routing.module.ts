@@ -7,15 +7,18 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { LogoutUserComponent } from './components/logout-user/logout-user.component';
 import { AddCustomerComponent } from './components/add-customer/add-customer.component';
 import { DetailsCustomerComponent } from './components/details-customer/details-customer.component';
+import { AllCustomersComponent } from './components/all-customers/all-customers.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
+  
   { path: 'user/register', component: RegisterUserComponent },
   { path: 'login', component: LoginUserComponent },
   { path: 'logout', component: LogoutUserComponent },
 
   { path: 'customer/add', component: AddCustomerComponent },
   { path: 'customer/get', component: DetailsCustomerComponent },
+  { path: 'customer/all', component: AllCustomersComponent },
 ];
 
 @NgModule({

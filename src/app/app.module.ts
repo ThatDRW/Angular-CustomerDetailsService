@@ -15,6 +15,7 @@ import { LogoutUserComponent } from './components/logout-user/logout-user.compon
 import { AddCustomerComponent } from './components/add-customer/add-customer.component';
 import { DetailsCustomerComponent } from './components/details-customer/details-customer.component';
 import { ListCustomersComponent } from './components/list-customers/list-customers.component';
+import { AllCustomersComponent } from './components/all-customers/all-customers.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ListCustomersComponent } from './components/list-customers/list-custome
     LogoutUserComponent,
     AddCustomerComponent,
     DetailsCustomerComponent,
-    ListCustomersComponent
+    ListCustomersComponent,
+    AllCustomersComponent
   ],
   imports: [
     BrowserModule,
