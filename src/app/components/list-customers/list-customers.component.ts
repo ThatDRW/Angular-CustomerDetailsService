@@ -8,7 +8,6 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class ListCustomersComponent implements OnInit {
 
-    customerList = undefined;
     currentIndex : number | undefined = undefined;
 
     hasError = false;
@@ -16,6 +15,10 @@ export class ListCustomersComponent implements OnInit {
 
     @Input()
     viewAll = true;
+
+    @Input()
+    customerList = undefined;
+
 
     constructor(private customerService : CustomerService) { }
 

@@ -1,1 +1,9 @@
-<p>find-customer works!</p>
+<h2>Find Customer</h2>
+<table>
+    <tr>
+        <td class="align-bottom"><input [(ngModel)]="searchQuery" id="getid" placeholder="Enter Name (case sensitive)" /><br/><br/></td>
+        <td class="align-top"><button type="button" class="btn btn-primary" (click)="updateCustomerList()">Search</button></td>
+    </tr>
+</table>
+<br/>
+<app-list-customers [viewAll]="false" [customerList]="customerList"></app-list-customers>
