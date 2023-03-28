@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,7 +10,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 
-import { AuthInterceptor } from './helpers/auth.interceptor';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { LogoutUserComponent } from './components/logout-user/logout-user.component';
 import { AddCustomerComponent } from './components/add-customer/add-customer.component';
 
@@ -30,7 +30,9 @@ import { AddCustomerComponent } from './components/add-customer/add-customer.com
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthInterceptor],
+  providers: [
+    authInterceptorProviders,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
