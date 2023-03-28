@@ -25,4 +25,25 @@ export class CustomerService {
     addCustomer(data: any): Observable<any> {
         return this.http.post<Customer>(this.baseUrl, data, {observe: 'response'});
     }
+
+    public static datafyCustomer(customer:Customer, includeId:boolean) {
+        if (includeId) {
+            const data = {
+                id: customer.id,
+                firstName: customer.firstname,
+                lastName: customer.lastname,
+                age: customer.age,
+                address: customer.address
+            };
+            return data;
+        }
+
+        const data = {
+            firstName: customer.firstname,
+            lastName: customer.lastname,
+            age: customer.age,
+            address: customer.address
+        };
+        return data;
+    }
 }
