@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'customer/get/:id', component: DetailsCustomerComponent },
   { path: 'customer/all', component: AllCustomersComponent },
   { path: 'customer/find', component: FindCustomerComponent },
+  { path: 'customer/find/:query', component: FindCustomerComponent },
 ];
 
 @NgModule({
