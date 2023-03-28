@@ -16,6 +16,7 @@ import { AddCustomerComponent } from './components/add-customer/add-customer.com
 import { DetailsCustomerComponent } from './components/details-customer/details-customer.component';
 import { ListCustomersComponent } from './components/list-customers/list-customers.component';
 import { AllCustomersComponent } from './components/all-customers/all-customers.component';
+import { FindCustomerComponent } from './components/find-customer/find-customer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AllCustomersComponent } from './components/all-customers/all-customers.
     AddCustomerComponent,
     DetailsCustomerComponent,
     ListCustomersComponent,
-    AllCustomersComponent
+    AllCustomersComponent,
+    FindCustomerComponent
   ],
   imports: [
     BrowserModule,
