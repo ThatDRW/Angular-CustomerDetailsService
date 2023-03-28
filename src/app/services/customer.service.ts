@@ -26,6 +26,12 @@ export class CustomerService {
         return this.http.post<Customer>(this.baseUrl, data, {observe: 'response'});
     }
 
+    getCustomer(id: any): Observable<any> {
+        return this.http.get<Customer>(this.baseUrl + "/" + id);
+    }
+
+
+
     public static datafyCustomer(customer:Customer, includeId:boolean) {
         if (includeId) {
             const data = {
@@ -45,5 +51,16 @@ export class CustomerService {
             address: customer.address
         };
         return data;
+    }
+
+    public static custofyData(data:any) {
+        const customer = {
+            id: data.id,
+            firstname: data.firstName,
+            lastname: data.lastName,
+            age: data.age,
+            address: data.address
+        }
+        return customer;
     }
 }
