@@ -14,6 +14,7 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { LogoutUserComponent } from './components/logout-user/logout-user.component';
 import { AddCustomerComponent } from './components/add-customer/add-customer.component';
 import { DetailsCustomerComponent } from './components/details-customer/details-customer.component';
+import { AllCustomersComponent } from './components/all-customers/all-customers.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DetailsCustomerComponent } from './components/details-customer/details-
     LoginUserComponent,
     LogoutUserComponent,
     AddCustomerComponent,
-    DetailsCustomerComponent
+    DetailsCustomerComponent,
+    AllCustomersComponent
   ],
   imports: [
     BrowserModule,
