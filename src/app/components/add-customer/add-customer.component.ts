@@ -46,26 +46,4 @@ export class AddCustomerComponent implements OnInit {
             }
         });
     }
-
-    datafyCustomer(includeId:boolean) : any {
-        if (includeId) {
-            const data = {
-                id: this.customer.id,
-                firstName: this.customer.firstname,
-                lastName: this.customer.lastname,
-                age: this.customer.age,
-                address: this.customer.address
-            };
-            return data;
-        }
-
-        const data = {
-            firstName: this.customer.firstname,
-            lastName: this.customer.lastname,
-            age: this.customer.age,
-            address: this.customer.address
-        };
-        return data;
-    }
-
 }
