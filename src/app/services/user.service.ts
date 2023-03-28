@@ -8,7 +8,7 @@ import { User } from '../models/user.model';
 })
 export class UserService {
 
-    private baseUrl = "http://localhost:8080/user"
+    private baseUrl = "http://localhost:8080/user";
     private userRegisterUrl = "http://localhost:8080/user/register";
     private userAuthenticateUrl = "http://localhost:8080/authenticate";
 
