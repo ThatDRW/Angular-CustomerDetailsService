@@ -12,8 +12,8 @@
                 <th>Address</th>
             </tr>
             <tr class=""
-                *ngFor="let customer of customerList; let i = index" >
-                (click)="setActiveCustomer(customer, i)">
+                *ngFor="let customer of customerList; let i = index"
+                (click)="setActiveCustomer(customer, i)" >
 
                 <td>{{customer.id}}</td>
                 <td>{{customer.firstName}}</td>
