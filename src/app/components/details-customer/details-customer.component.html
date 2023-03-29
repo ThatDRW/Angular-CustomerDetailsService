@@ -1,41 +1,43 @@
-<h2>Customer Details</h2>
-<div *ngIf="hasError" class="alert alert-danger">{{errorMessage}}</div>
-<!--<div *ngIf="submitted" class="alert alert-success">Customer added succesfully.</div>-->
+<div class="container" style="width:800px">
+    <h2>Customer Details</h2>
+    <div *ngIf="hasError" class="alert alert-danger">{{errorMessage}}</div>
+    <!--<div *ngIf="submitted" class="alert alert-success">Customer added succesfully.</div>-->
 
-<table>
-    <tr>
-        <td class="align-bottom"><input [(ngModel)]="getId" id="getid" placeholder="Enter Id" /><br/><br/></td>
-        <td class="align-top"><button type="button" class="btn btn-primary" (click)="getCustomer()">Fetch Details</button></td>
-    </tr>
-</table>
-<br/>
-
-<div *ngIf="isViewingCustomer">
     <table>
-        <tr><td>Id:</td>
-            <td>{{customer.id}}</td>
-        </tr>
-        <tr><td>First Name:</td>
-            <td *ngIf="!isEditing">{{customer.firstname}}</td>
-            <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.firstname"></td>
-        </tr>
-        <tr><td>Last Name:</td>
-            <td *ngIf="!isEditing">{{customer.lastname}}</td>
-            <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.lastname"></td>
-        </tr>
-        <tr><td>Age:</td>
-            <td *ngIf="!isEditing">{{customer.age}}</td>
-            <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.age"></td>
-        </tr>
-        <tr><td>Address:</td>
-            <td *ngIf="!isEditing">{{customer.address}}</td>
-            <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.address"></td>
+        <tr>
+            <td class="align-bottom"><input [(ngModel)]="getId" id="getid" placeholder="Enter Id" /><br/><br/></td>
+            <td class="align-top"><button type="button" class="btn btn-primary" (click)="getCustomer()">Fetch Details</button></td>
         </tr>
     </table>
-
     <br/>
-    <button type="button" class="btn btn-primary" *ngIf="!isEditing" (click)="editCustomer()">Edit Details</button>
-    <button type="button" class="btn btn-warning" *ngIf="isEditing" (click)="cancelEdit()">Cancel</button>
-    <button type="button" class="btn btn-success" *ngIf="isEditing" (click)="saveCustomer()">Save</button>
 
+    <div *ngIf="isViewingCustomer">
+        <table>
+            <tr><td>Id:</td>
+                <td>{{customer.id}}</td>
+            </tr>
+            <tr><td>First Name:</td>
+                <td *ngIf="!isEditing">{{customer.firstname}}</td>
+                <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.firstname"></td>
+            </tr>
+            <tr><td>Last Name:</td>
+                <td *ngIf="!isEditing">{{customer.lastname}}</td>
+                <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.lastname"></td>
+            </tr>
+            <tr><td>Age:</td>
+                <td *ngIf="!isEditing">{{customer.age}}</td>
+                <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.age"></td>
+            </tr>
+            <tr><td>Address:</td>
+                <td *ngIf="!isEditing">{{customer.address}}</td>
+                <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.address"></td>
+            </tr>
+        </table>
+
+        <br/>
+        <button type="button" class="btn btn-primary" *ngIf="!isEditing" (click)="editCustomer()">Edit Details</button>
+        <button type="button" class="btn btn-warning" *ngIf="isEditing" (click)="cancelEdit()">Cancel</button>
+        <button type="button" class="btn btn-success" *ngIf="isEditing" (click)="saveCustomer()">Save</button>
+
+    </div>
 </div>
