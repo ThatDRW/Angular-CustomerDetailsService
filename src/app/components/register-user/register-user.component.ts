@@ -48,4 +48,8 @@ export class RegisterUserComponent implements OnInit {
         });
     }
 
+    gotoLogin() : void {
+        window.location.href = "http://localhost:4200/login";
+    }
+
 }
