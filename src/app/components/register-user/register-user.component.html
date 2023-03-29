@@ -1,23 +1,22 @@
-<div *ngIf="haserror" class="alert alert-danger">{{errormessage}}</div>
-<div *ngIf="submitted" class="alert alert-success">User added succesfully. You can now login.</div>
+<div class="container" style="width:800px">
+    <h2>Register new User</h2>
+    <div *ngIf="haserror" class="alert alert-danger">{{errormessage}}</div>
+    <div *ngIf="submitted" class="alert alert-success">User added succesfully. You can now login.</div>
 
-<div *ngIf="!submitted">
-    <table>
-        <tr>
-        <td><label for="username">Username:</label></td>
+    <div *ngIf="!submitted">
+        <table class="table table-sm">
+            <tr>
+                <td><label for="username">Username:</label></td>
         <td><input [(ngModel)]="user.username" placeholder="Username"/></td>
-        <td>{{user.username}}</td>
-        </tr>
-        <tr>
-            <td><label for="password">Password:</label></td>
-            <td><input [(ngModel)]="user.password" placeholder="Password"/></td>
-            <td>{{user.password}}</td>
-        </tr>
-    </table>
+    </tr>
+    <tr>
+        <td><label for="password">Password:</label></td>
+        <td><input [(ngModel)]="user.password" placeholder="Password"/></td>
+    </tr>
+</table>
 
-    <input type="submit" value="Register" (click)="registerUser()"/>
+<button type="button" class="btn btn-primary" (click)="registerUser()">Register</button>
 </div>
 
-<div *ngIf="submitted && !haserror">Go to User Login: </div>
-
-
+<div *ngIf="submitted && !haserror">Go to User Login: <button type="button" class="btn btn-success" (click)="gotoLogin()">Login</button></div>
+</div>
