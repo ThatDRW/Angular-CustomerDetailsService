@@ -37,6 +37,7 @@ export class AddCustomerComponent implements OnInit {
             next: (res) => {
                 console.log(res);
                 this.submitted = true;
+                this.delayedReload();
             },
             error: (e) => {
                 console.error(e);
@@ -45,5 +46,11 @@ export class AddCustomerComponent implements OnInit {
                 this.errorMessage = e.error.status + " " + e.error.title;
             }
         });
+    }
+
+    delayedReload() : void {
+        setTimeout(() => {
+            window.location.href="http://localhost:4200/customer/add";
+          }, 5000);
     }
 }
