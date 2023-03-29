@@ -4,29 +4,29 @@
 <div *ngIf="submitted" class="alert alert-success"><b>Customer added succesfully.</b><br/>You will be redirected shortly.</div>
 
 <div *ngIf="!submitted">
-    <table>
+    <table class="table table-sm">
         <tr>
             <td><label for="firstname">First Name:</label></td>
             <td><input [(ngModel)]="customer.firstname" id="firstname" placeholder="First Name"/></td>
-            <td>{{customer.firstname}}</td>
         </tr>
         <tr>
             <td><label for="lastname">Last Name:</label></td>
             <td><input [(ngModel)]="customer.lastname" id="lastname" placeholder="Last Name"/></td>
-            <td>{{customer.lastname}}</td>
         </tr>
         <tr>
             <td><label for="age">Age:</label></td>
             <td><input [(ngModel)]="customer.age" id="age" placeholder="Age"/></td>
-            <td>{{customer.age}}</td>
         </tr>
         <tr>
             <td><label for="address">Address:</label></td>
             <td><input [(ngModel)]="customer.address" id="address" placeholder="Address"/></td>
-            <td>{{customer.address}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
         </tr>
 
     </table>
-
-    <input type="submit" value="Add Customer" (click)="addCustomer()" />
+    <br/>
+    <button type="button" class="btn btn-success" (click)="addCustomer()">Add Customer</button>
 </div>
