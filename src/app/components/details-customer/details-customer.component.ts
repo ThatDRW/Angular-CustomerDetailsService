@@ -59,7 +59,10 @@ export class DetailsCustomerComponent implements OnInit {
                 console.log(e.error.status + " " + e.error.title);
 
                 this.hasError = true;
-                this.errorMessage = e.error.status + " " + e.error.title;
+                if (e.error.status)
+                    this.errorMessage = e.error.status + " " + e.error.title;
+                else
+                    this.errorMessage = 'Id not found! Please enter a valid Customer Id.';
             }
         });
     }
