@@ -17,6 +17,7 @@ import { DetailsCustomerComponent } from './components/details-customer/details-
 import { ListCustomersComponent } from './components/list-customers/list-customers.component';
 import { AllCustomersComponent } from './components/all-customers/all-customers.component';
 import { FindCustomerComponent } from './components/find-customer/find-customer.component';
+import { ProfileUserComponent } from './components/profile-user/profile-user.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FindCustomerComponent } from './components/find-customer/find-customer.
     DetailsCustomerComponent,
     ListCustomersComponent,
     AllCustomersComponent,
-    FindCustomerComponent
+    FindCustomerComponent,
+    ProfileUserComponent
   ],
   imports: [
     BrowserModule,

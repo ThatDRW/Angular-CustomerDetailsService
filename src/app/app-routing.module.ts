@@ -9,6 +9,7 @@ import { AddCustomerComponent } from './components/add-customer/add-customer.com
 import { DetailsCustomerComponent } from './components/details-customer/details-customer.component';
 import { AllCustomersComponent } from './components/all-customers/all-customers.component';
 import { FindCustomerComponent } from './components/find-customer/find-customer.component';
+import { ProfileUserComponent } from './components/profile-user/profile-user.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'customer/all', component: AllCustomersComponent },
   { path: 'customer/find', component: FindCustomerComponent },
   { path: 'customer/find/:query', component: FindCustomerComponent },
+  { path: 'user/profile', component: ProfileUserComponent }
 ];
 
 @NgModule({
