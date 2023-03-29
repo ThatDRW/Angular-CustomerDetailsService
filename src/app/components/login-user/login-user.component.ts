@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HTTP_ROOT } from 'src/app/href-constants.constants';
 import { User } from 'src/app/models/user.model';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
@@ -53,7 +54,7 @@ export class LoginUserComponent implements OnInit {
                 this.submitted = true;
                 setTimeout(() => {
                     // this.router.navigate(['']);
-                    window.location.href="http://localhost:4200";
+                    window.location.href=HTTP_ROOT;
                   }, 5000);
             },
             error: (e) => {

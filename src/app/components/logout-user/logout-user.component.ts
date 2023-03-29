@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HTTP_ROOT } from 'src/app/href-constants.constants';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class LogoutUserComponent implements OnInit {
         this.tokenStorage.signOut();
         this.signedOut = true;
         setTimeout(() => {
-            window.location.href="http://localhost:4200";
+            window.location.href=HTTP_ROOT;
           }, 5000);
     }
 

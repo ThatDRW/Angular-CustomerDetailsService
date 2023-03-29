@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
+import { HTTP_ROOT } from 'src/app/href-constants.constants';
 
 @Component({
   selector: 'app-add-customer',
@@ -50,7 +51,7 @@ export class AddCustomerComponent implements OnInit {
 
     delayedReload() : void {
         setTimeout(() => {
-            window.location.href="http://localhost:4200/customer/add";
+            window.location.href=HTTP_ROOT + "customer/add";
           }, 5000);
     }
 }

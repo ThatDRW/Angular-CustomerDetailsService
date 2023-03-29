@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HTTP_ROOT } from 'src/app/href-constants.constants';
 import { UserService } from 'src/app/services/user.service';
 import { User } from '../../models/user.model';
 
@@ -49,7 +50,7 @@ export class RegisterUserComponent implements OnInit {
     }
 
     gotoLogin() : void {
-        window.location.href = "http://localhost:4200/login";
+        window.location.href = HTTP_ROOT + "login";
     }
 
 }
