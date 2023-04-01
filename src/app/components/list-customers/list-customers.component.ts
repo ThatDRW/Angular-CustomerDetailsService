@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
@@ -41,6 +42,11 @@ export class ListCustomersComponent implements OnInit {
                     this.hasError = false;
                     this.errorMessage = '';
                     this.customerList = res;
+
+                    if (this.customerList) {
+                        const cust = this.customerList[0];
+                        console.log(cust);
+                    }
                 },
                 error: (e) => {
                     console.error(e);

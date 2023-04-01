@@ -25,8 +25,11 @@
                 <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.lastname"></td>
             </tr>
             <tr><td>Date of Birth:</td>
-                <td *ngIf="!isEditing">{{customer.dateofbirth}}</td>
+                <td *ngIf="!isEditing">{{customer.dateofbirth | date : "mediumDate"}}</td>
                 <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.dateofbirth"></td>
+            </tr>
+            <tr><td>Age:</td>
+                <td>{{customer.age}}</td>
             </tr>
             <tr><td>Address:</td>
                 <td *ngIf="!isEditing">{{customer.address}}</td>

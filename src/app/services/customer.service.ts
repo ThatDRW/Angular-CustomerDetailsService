@@ -52,6 +52,8 @@ export class CustomerService {
     The implementation below also includes a boolean parameter includeId.
     This is used to differentiate between 'Adding New Customer' requests,
     and 'Update Existing Customer' ones.
+
+    After the first code review, I also added the age calculation here.
     */
     public static datafyCustomer(customer:Customer, includeId:boolean) {
         if (includeId) {
@@ -75,11 +77,16 @@ export class CustomerService {
     }
 
     public static custofyData(data:any) {
+        let dateOfBirth = new Date(data.dateOfBirth);
+        let timeDifference = Math.abs(Date.now() - dateOfBirth.getTime());
+        let calculatedAge = Math.floor((timeDifference / (1000 * 3600 * 24))/365.25);
+
         const customer = {
             id: data.id,
             firstname: data.firstName,
             lastname: data.lastName,
             dateofbirth: data.dateOfBirth,
+            age: calculatedAge,
             address: data.address
         }
         return customer;

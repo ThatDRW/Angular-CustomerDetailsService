@@ -3,5 +3,6 @@ export class Customer {
     firstname: string | undefined;
     lastname: string | undefined;
     dateofbirth: Date | undefined;
+    age: number | undefined;
     address: string | undefined;
 }
