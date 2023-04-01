@@ -12,7 +12,7 @@
     <br/>
 
     <div *ngIf="isViewingCustomer">
-        <table>
+        <table class="table table-sm">
             <tr><td>Id:</td>
                 <td>{{customer.id}}</td>
             </tr>
@@ -28,7 +28,7 @@
                 <td *ngIf="!isEditing">{{customer.dateofbirth | date : "mediumDate"}}</td>
                 <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.dateofbirth"></td>
             </tr>
-            <tr><td>Age:</td>
+            <tr *ngIf="!isEditing"><td>Age:</td>
                 <td>{{customer.age}}</td>
             </tr>
             <tr><td>Address:</td>
