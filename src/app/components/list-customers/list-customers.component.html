@@ -19,7 +19,7 @@
                 <td>{{customer.firstName}}</td>
                 <td>{{customer.lastName}}</td>
                 <td>{{customer.dateOfBirth | date : "mediumDate"}}</td>
-                <td>{{customer.address}}</td>
+                <td>{{customerAddress(customer)}}</td>
             </tr>
         </table>
     </div>

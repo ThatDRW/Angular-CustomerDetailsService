@@ -31,9 +31,20 @@
             <tr *ngIf="!isEditing"><td>Age:</td>
                 <td>{{customer.age}}</td>
             </tr>
-            <tr><td>Address:</td>
-                <td *ngIf="!isEditing">{{customer.address}}</td>
-                <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.address"></td>
+            <tr *ngIf="!isEditing"><td>Address:</td>
+                <td>{{customerAddress(customer)}}</td>
+            </tr>
+            <tr *ngIf="isEditing"><td>Street Name:</td>
+                <td><input type="text" [(ngModel)]="customer.address!.streetName" name="streetName" placeholder="Street Name"></td>
+            </tr>
+            <tr *ngIf="isEditing"><td>House Number:</td>
+                <td><input type="text" [(ngModel)]="customer.address!.houseNumber" name="houseNumber" placeholder="House Number"></td>
+            </tr>
+            <tr *ngIf="isEditing"><td>Zip Code:</td>
+                <td><input type="text" [(ngModel)]="customer.address!.zipCode" name="zipCode" placeholder="Zip Code"></td>
+            </tr>
+            <tr *ngIf="isEditing"><td>City:</td>
+                <td><input type="text" [(ngModel)]="customer.address!.city" name="city" placeholder="City"></td>
             </tr>
         </table>
 

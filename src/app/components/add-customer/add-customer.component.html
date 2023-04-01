@@ -19,8 +19,20 @@
                 <td><input [(ngModel)]="customer.dateofbirth" id="dateofbirth" placeholder="Date of Birth"/></td>
             </tr>
             <tr>
-                <td><label for="address">Address:</label></td>
-                <td><input [(ngModel)]="customer.address" id="address" placeholder="Address"/></td>
+                <td><label for="streetName">Street Name:</label></td>
+                <td><input type="text" [(ngModel)]="customer.address!.streetName" id="streetName" placeholder="Street Name"></td>
+            </tr>
+            <tr>
+                <td><label for="houseNumber">House Number:</label></td>
+                <td><input type="text" [(ngModel)]="customer.address!.houseNumber" id="houseNumber" placeholder="House Number"></td>
+            </tr>
+            <tr>
+                <td><label for="zipCode">Zip Code:</label></td>
+                <td><input type="text" [(ngModel)]="customer.address!.zipCode" id="zipCode" placeholder="Zip Code"></td>
+            </tr>
+            <tr>
+                <td><label for="city">City:</label></td>
+                <td><input type="text" [(ngModel)]="customer.address!.city" id="city" placeholder="City"></td>
             </tr>
         </table>
         <br/>

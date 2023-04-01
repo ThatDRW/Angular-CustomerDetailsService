@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { HTTP_ROOT } from 'src/app/href-constants.constants';
+import { Address } from 'src/app/models/address.model';
 
 @Component({
   selector: 'app-add-customer',
@@ -26,11 +27,12 @@ export class AddCustomerComponent implements OnInit {
     constructor(private customerService: CustomerService) { }
 
     ngOnInit(): void {
-
+        this.customer.address = new Address();
     }
 
     addCustomer() : void {
         const data = CustomerService.datafyCustomer(this.customer, false);
+        console.warn(data.address);
 
         console.log("Adding customer with info " + data);
 
@@ -39,6 +41,7 @@ export class AddCustomerComponent implements OnInit {
             next: (res) => {
                 console.log(res);
                 this.submitted = true;
+                this.hasError = false;
                 this.delayedReload();
             },
             error: (e) => {
