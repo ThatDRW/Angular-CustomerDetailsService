@@ -14,7 +14,7 @@ export class DetailsCustomerComponent implements OnInit {
         id: undefined,
         firstname: undefined,
         lastname: undefined,
-        age: undefined,
+        dateofbirth: undefined,
         address: undefined
     };
 

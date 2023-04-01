@@ -14,7 +14,7 @@ export class AddCustomerComponent implements OnInit {
         id: undefined,
         firstname: undefined,
         lastname: undefined,
-        age: undefined,
+        dateofbirth: undefined,
         address: undefined
     };
 

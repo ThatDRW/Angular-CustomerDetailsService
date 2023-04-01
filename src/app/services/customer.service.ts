@@ -59,7 +59,7 @@ export class CustomerService {
                 id: customer.id,
                 firstName: customer.firstname,
                 lastName: customer.lastname,
-                age: customer.age,
+                dateOfBirth: customer.dateofbirth,
                 address: customer.address
             };
             return data;
@@ -68,7 +68,7 @@ export class CustomerService {
         const data = {
             firstName: customer.firstname,
             lastName: customer.lastname,
-            age: customer.age,
+            dateOfBirth: customer.dateofbirth,
             address: customer.address
         };
         return data;
@@ -79,7 +79,7 @@ export class CustomerService {
             id: data.id,
             firstname: data.firstName,
             lastname: data.lastName,
-            age: data.age,
+            dateofbirth: data.dateOfBirth,
             address: data.address
         }
         return customer;
