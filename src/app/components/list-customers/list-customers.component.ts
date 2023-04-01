@@ -56,12 +56,18 @@ export class ListCustomersComponent implements OnInit {
                     this.errorMessage = e.error.status + " " + e.error.title;
                 }
             });
+
     }
 
     showCustomerDetails(data : any, index : number) : void {
         this.currentIndex = index;
         console.log('Boop ' + data.id)
         this.router.navigate(["customer/get/" + data.id]);
+    }
+
+    customerAddress(data: any) {
+        const address = (data as Customer).address;
+        return address?.streetName + " " + address?.houseNumber + ", " + address?.zipCode + " " + address?.city;
     }
 
 }

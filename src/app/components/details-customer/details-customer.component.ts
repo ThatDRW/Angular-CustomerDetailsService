@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Address } from 'src/app/models/address.model';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
 
@@ -18,6 +19,14 @@ export class DetailsCustomerComponent implements OnInit {
         age: undefined,
         address: undefined
     };
+
+    address:Address| undefined = {
+        id: -1,
+        streetName: "",
+        houseNumber: "",
+        zipCode: "",
+        city: ""
+    }
 
     getId : string | null = '';
     hasError = false;
@@ -70,6 +79,7 @@ export class DetailsCustomerComponent implements OnInit {
 
     editCustomer() : void {
         this.isEditing = true;
+        this.address = this.customer.address;
     }
 
     saveCustomer() : void {
@@ -95,5 +105,10 @@ export class DetailsCustomerComponent implements OnInit {
     cancelEdit() : void {
         this.getCustomer();
         this.isEditing = false;
+    }
+
+    customerAddress(data: any) {
+        const address = (data as Customer).address;
+        return address?.streetName + " " + address?.houseNumber + ", " + address?.zipCode + " " + address?.city;
     }
 }
