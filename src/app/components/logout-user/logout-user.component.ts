@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { HTTP_ROOT } from 'src/app/href-constants.constants';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
