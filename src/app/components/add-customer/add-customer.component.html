@@ -1,7 +1,7 @@
 <div class="container" style="width:800px">
     <h2>Add Customer</h2>
 
-    <div *ngIf="hasError" class="alert alert-danger">{{errorMessage}}</div>
+    <div *ngIf="hasError" class="alert alert-danger" style="white-space: pre-line">{{errorMessage}}</div>
     <div *ngIf="submitted" class="alert alert-success"><b>Customer added succesfully.</b><br/>You will be redirected shortly.</div>
 
     <div *ngIf="!submitted">
