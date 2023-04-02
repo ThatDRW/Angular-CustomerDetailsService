@@ -1,6 +1,7 @@
 import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ErrorResponseUtilService } from 'src/app/helpers/errorresponseutil.service';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
@@ -18,13 +19,13 @@ export class FindCustomerComponent implements OnInit {
 
     constructor(
         private customerService: CustomerService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private errorHelper: ErrorResponseUtilService,
     ) { }
 
     ngOnInit(): void {
         if (this.route.snapshot.paramMap.has('query')) {
             const query = this.route.snapshot.paramMap.get('query');
-            console.log("Detected query in route paramMap: " + query);
 
             this.searchQuery = query;
             this.updateCustomerList();
@@ -39,18 +40,18 @@ export class FindCustomerComponent implements OnInit {
         this.customerService.findCustomers(this.searchQuery)
             .subscribe({
                 next: (res) => {
-                    console.log(res);
-
                     this.hasError = false;
                     this.errorMessage = '';
                     this.customerList = res;
+
+                    console.log(res);
                 },
                 error: (e) => {
+                    this.hasError = true;
+                    this.errorMessage = this.errorHelper.handleError(e);
+
                     console.error(e);
                     console.log(e.error.status + " " + e.error.title);
-
-                    this.hasError = true;
-                    this.errorMessage = e.error.status + " " + e.error.title;
                 }
             });
     }
