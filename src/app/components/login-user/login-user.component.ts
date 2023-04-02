@@ -55,7 +55,7 @@ export class LoginUserComponent implements OnInit {
                 setTimeout(() => {
                     // this.router.navigate(['']);
                     window.location.href=HTTP_ROOT;
-                  }, 5000);
+                  }, 2500);
             },
             error: (e) => {
                 console.error(e);

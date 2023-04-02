@@ -22,7 +22,7 @@ export class LogoutUserComponent implements OnInit {
         this.signedOut = true;
         setTimeout(() => {
             window.location.href=HTTP_ROOT;
-          }, 5000);
+          }, 2500);
     }
 
 }
