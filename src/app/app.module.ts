@@ -32,7 +32,7 @@ import { ProfileUserComponent } from './components/profile-user/profile-user.com
     ListCustomersComponent,
     AllCustomersComponent,
     FindCustomerComponent,
-    ProfileUserComponent
+    ProfileUserComponent,
   ],
   imports: [
     BrowserModule,
