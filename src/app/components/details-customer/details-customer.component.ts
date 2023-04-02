@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ErrorResponseUtilService } from 'src/app/helpers/errorresponseutil.service';
 import { Address } from 'src/app/models/address.model';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -11,7 +12,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class DetailsCustomerComponent implements OnInit {
 
-    customer:Customer = {
+    customer : Customer = {
         id: undefined,
         firstname: undefined,
         lastname: undefined,
@@ -20,7 +21,7 @@ export class DetailsCustomerComponent implements OnInit {
         address: undefined
     };
 
-    address:Address| undefined = {
+    address : Address | undefined = {
         id: -1,
         streetName: "",
         houseNumber: "",
@@ -38,48 +39,44 @@ export class DetailsCustomerComponent implements OnInit {
 
     constructor(
         private customerService: CustomerService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private errorHelper: ErrorResponseUtilService,
     ) { }
 
     ngOnInit() : void {
         if (this.route.snapshot.paramMap.has('id')) {
             const id = this.route.snapshot.paramMap.get('id');
-            console.log("Detected id in route paramMap: " + id);
-
             this.getId = id;
             this.getCustomer();
         }
-
     }
 
     getCustomer() : void {
         this.customerService.getCustomer(this.getId)
         .subscribe({
             next: (res) => {
-                console.log(res);
-
                 this.hasError = false;
                 this.errorMessage = '';
+
                 this.isViewingCustomer = true;
                 this.customer = CustomerService.custofyData(res);
                 this.submitted = false;
+
+                console.log(res);
             },
             error: (e) => {
+                this.hasError = true;
+                this.errorMessage = this.errorHelper.handleError(e);
+
                 console.error(e);
                 console.log(e.error.status + " " + e.error.title);
-
-                this.hasError = true;
-                if (e.error.status)
-                    this.errorMessage = e.error.status + " " + e.error.title;
-                else
-                    this.errorMessage = 'Id not found! Please enter a valid Customer Id.';
             }
         });
     }
 
     editCustomer() : void {
         this.isEditing = true;
-        this.address = this.customer.address;
+        this.address = this.customer.address; // Ensures data retention.
     }
 
     saveCustomer() : void {
@@ -88,16 +85,18 @@ export class DetailsCustomerComponent implements OnInit {
         this.customerService.addCustomer(data)
         .subscribe({
             next: (res) => {
-                console.log(res);
                 this.submitted = true;
                 this.isEditing = false;
                 this.getCustomer();
+
+                console.log(res);
             },
             error: (e) => {
-                console.error(e);
                 this.hasError = true;
+                this.errorMessage = this.errorHelper.handleError(e);
+
+                console.error(e);
                 console.log(e.error.status + " " + e.error.title);
-                this.errorMessage = e.error.status + " " + e.error.title;
             }
         });
     }
