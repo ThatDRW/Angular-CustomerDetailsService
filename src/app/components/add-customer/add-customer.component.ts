@@ -3,6 +3,7 @@ import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { HTTP_ROOT } from 'src/app/href-constants.constants';
 import { Address } from 'src/app/models/address.model';
+import { ErrorResponseUtilService as ErrorResponseUtilService } from 'src/app/helpers/errorresponseutil.service';
 
 @Component({
   selector: 'app-add-customer',
@@ -25,7 +26,10 @@ export class AddCustomerComponent implements OnInit {
     errorResponse = undefined;
     submitted = false;
 
-    constructor(private customerService: CustomerService) { }
+    constructor(
+        private customerService: CustomerService,
+        private errorHelper: ErrorResponseUtilService,
+    ) { }
 
     ngOnInit(): void {
         this.customer.address = new Address();
@@ -40,26 +44,19 @@ export class AddCustomerComponent implements OnInit {
         this.customerService.addCustomer(data)
         .subscribe({
             next: (res) => {
-                console.log(res);
-                this.submitted = true;
                 this.hasError = false;
+                this.submitted = true;
+                console.log(res);
                 this.delayedReload();
             },
             error: (e) => {
-                console.error(e);
                 this.hasError = true;
-                this.errorResponse = e.error;
+                console.error(e);
                 console.log(e.error.status + " " + e.error.title);
 
-                this.parseErrorResponse();
+                this.errorMessage = this.errorHelper.handleError(e);
             }
         });
-    }
-
-    parseErrorResponse() : void {
-        let messages: string[] = (this.errorResponse!['message'] as string[]);
-        this.errorMessage = messages.join("\n");
-        console.warn(this.errorMessage);
     }
 
     delayedReload() : void {
