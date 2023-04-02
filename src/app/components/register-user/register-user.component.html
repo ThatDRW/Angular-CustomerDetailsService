@@ -1,6 +1,6 @@
 <div class="container" style="width:800px">
     <h2>Register new User</h2>
-    <div *ngIf="haserror" class="alert alert-danger">{{errormessage}}</div>
+    <div *ngIf="hasError" class="alert alert-danger" style="white-space: pre-line">{{errorMessage}}</div>
     <div *ngIf="submitted" class="alert alert-success">User added succesfully. You can now login.</div>
 
     <div *ngIf="!submitted">
@@ -18,5 +18,5 @@
 <button type="button" class="btn btn-primary" (click)="registerUser()">Register</button>
 </div>
 
-<div *ngIf="submitted && !haserror">Go to User Login: <button type="button" class="btn btn-success" (click)="gotoLogin()">Login</button></div>
+<div *ngIf="submitted && !hasError">Go to User Login: <button type="button" class="btn btn-success" (click)="gotoLogin()">Login</button></div>
 </div>

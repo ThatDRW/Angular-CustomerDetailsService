@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HTTP_ROOT } from 'src/app/href-constants.constants';
 import { UserService } from 'src/app/services/user.service';
 import { User } from '../../models/user.model';
+import { ErrorResponseUtilService } from 'src/app/helpers/errorresponseutil.service';
 
 
 @Component({
@@ -13,12 +14,14 @@ export class RegisterUserComponent implements OnInit {
 
     user:User = {username:"hi",password:"pass"};
     submitted = false;
-    submitstring = "Not sent!";
     result = "";
-    haserror = false;
-    errormessage = "";
+    hasError = false;
+    errorMessage = "";
 
-    constructor(private userService: UserService) { }
+    constructor(
+        private userService: UserService,
+        private errorHelper: ErrorResponseUtilService,
+    ) { }
 
     ngOnInit(): void {
 
@@ -35,16 +38,17 @@ export class RegisterUserComponent implements OnInit {
         this.userService.registerUser(data)
         .subscribe({
             next: (res) => {
-                console.log(res);
-                this.haserror = false;
+                this.hasError = false;
                 this.submitted = true;
-                this.submitstring = "Sent!";
+
+                console.log(res);
             },
             error: (e) => {
+                this.hasError = true;
+                this.errorMessage = this.errorHelper.handleError(e);
+
                 console.error(e);
-                this.haserror = true;
                 console.log(e.error.message[0]);
-                this.errormessage = e.error.message[0];
             }
         });
     }
