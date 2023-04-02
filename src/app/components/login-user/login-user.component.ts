@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ErrorResponseUtilService } from 'src/app/helpers/errorresponseutil.service';
 import { HTTP_ROOT } from 'src/app/href-constants.constants';
 import { User } from 'src/app/models/user.model';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -13,8 +14,8 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginUserComponent implements OnInit {
     user:User = {username:"", password:""};
     submitted = false;
-    haserror = false;
-    errormessage = "";
+    hasError = false;
+    errorMessage = "";
 
     isLoggedIn = false;
     isLoginFailed = false;
@@ -23,7 +24,7 @@ export class LoginUserComponent implements OnInit {
     constructor(
         private userService: UserService,
         private tokenStorage: TokenStorageService,
-        private router: Router
+        private errorHelper: ErrorResponseUtilService,
     ) {}
 
     ngOnInit(): void {
@@ -41,29 +42,31 @@ export class LoginUserComponent implements OnInit {
         console.log("Attempting login for user: " + this.user.username);
 
         this.userService.loginUser(data)
-        .subscribe({
-            next: (res) => {
-                console.log(res.headers.get("authorization"));
-                this.debugToken = res.headers.get('authorization');
-                this.tokenStorage.saveToken(res.headers.get('authorization'));
-                this.tokenStorage.saveUser({username: this.user.username});
+            .subscribe({
+                next: (res) => {
+                    console.log(res.headers.get("authorization"));
+                    this.debugToken = res.headers.get('authorization');
+                    this.tokenStorage.saveToken(res.headers.get('authorization'));
+                    this.tokenStorage.saveUser({username: this.user.username});
 
+                    console.log(res);
 
-                console.log(res);
-                this.haserror = false;
-                this.submitted = true;
-                setTimeout(() => {
-                    // this.router.navigate(['']);
-                    window.location.href=HTTP_ROOT;
-                  }, 2500);
-            },
-            error: (e) => {
-                console.error(e);
-                this.haserror = true;
-                console.log(e.error);
-                this.errormessage = e.error;
-            }
-        });
+                    this.hasError = false;
+                    this.errorMessage = '';
+                    this.submitted = true;
+
+                    setTimeout(() => {
+                        window.location.href=HTTP_ROOT;
+                    }, 2500);
+                },
+                error: (e) => {
+                    this.hasError = true;
+                    this.errorMessage = this.errorHelper.handleError(e);
+
+                    console.error(e);
+                    console.log(e.error);
+                }
+            });
 
     }
 }

@@ -1,6 +1,6 @@
 <div class="container" style="width:800px">
     <h2>Login</h2>
-    <div *ngIf="haserror" class="alert alert-danger">{{errormessage}}</div>
+    <div *ngIf="hasError" class="alert alert-danger" style="white-space: pre-line">{{errorMessage}}</div>
     <div *ngIf="submitted" class="alert alert-success"><b>User logged in succesfully!</b><br/>You will be redirected shortly.</div>
 
     <div *ngIf="!submitted">
@@ -18,7 +18,7 @@
         <button type="button" class="btn btn-success" (click)="loginUser()">Login</button>
     </div>
 
-    <div *ngIf="submitted && !haserror">{{debugToken}}
+    <div *ngIf="submitted && !hasError">{{debugToken}}
         <br/><br/>
         You will be redirected to the Landing page.
     </div>
