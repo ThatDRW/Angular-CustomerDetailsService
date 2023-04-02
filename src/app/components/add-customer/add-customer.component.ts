@@ -22,6 +22,7 @@ export class AddCustomerComponent implements OnInit {
 
     hasError = false;
     errorMessage = '';
+    errorResponse = undefined;
     submitted = false;
 
     constructor(private customerService: CustomerService) { }
@@ -47,15 +48,23 @@ export class AddCustomerComponent implements OnInit {
             error: (e) => {
                 console.error(e);
                 this.hasError = true;
+                this.errorResponse = e.error;
                 console.log(e.error.status + " " + e.error.title);
-                this.errorMessage = e.error.status + " " + e.error.title;
+
+                this.parseErrorResponse();
             }
         });
+    }
+
+    parseErrorResponse() : void {
+        let messages: string[] = (this.errorResponse!['message'] as string[]);
+        this.errorMessage = messages.join("\n");
+        console.warn(this.errorMessage);
     }
 
     delayedReload() : void {
         setTimeout(() => {
             window.location.href=HTTP_ROOT + "customer/add";
-          }, 5000);
+          }, 2500);
     }
 }
