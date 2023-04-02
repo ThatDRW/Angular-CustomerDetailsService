@@ -13,8 +13,7 @@ export class LogoutUserComponent implements OnInit {
     signedOut = false;
 
     constructor(
-        private tokenStorage: TokenStorageService,
-        private router: Router
+        private tokenStorage: TokenStorageService
     ) {}
 
     ngOnInit(): void {
