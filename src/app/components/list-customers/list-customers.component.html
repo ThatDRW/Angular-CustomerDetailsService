@@ -1,29 +1,22 @@
 <div *ngIf="hasError" class="alert alert-danger" style="white-space: pre-line">{{errorMessage}}</div>
 
-<div class="list row">
-    <div class="col-md-6">
-      <h4>Customer List</h4>
-        <table class="table">
-            <tr>
-                <th>Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Date of Birth</th>
-                <th>Address</th>
-            </tr>
-            <tr class=""
-                *ngFor="let customer of customerList; let i = index"
-                (click)="showCustomerDetails(customer, i)" >
+<h4>Customer List</h4>
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Address</th>
+    </tr>
+    <tr class=""
+        *ngFor="let customer of customerList; let i = index"
+        (click)="showCustomerDetails(customer, i)" >
 
-                <td>{{customer.id}}</td>
-                <td>{{customer.firstName}}</td>
-                <td>{{customer.lastName}}</td>
-                <td>{{customer.dateOfBirth | date : "mediumDate"}}</td>
-                <td>{{customerAddress(customer)}}</td>
-            </tr>
-        </table>
-    </div>
-    <!-- <div class="col-md-6">
-      <app-details-customer></app-details-customer>
-    </div> -->
-  </div>
+        <td>{{customer.id}}</td>
+        <td>{{customer.firstName}}</td>
+        <td>{{customer.lastName}}</td>
+        <td>{{customer.dateOfBirth | date : "mediumDate"}}</td>
+        <td>{{customerAddress(customer)}}</td>
+    </tr>
+</table>
