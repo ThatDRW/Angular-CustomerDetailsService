@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,7 @@ import { ListCustomersComponent } from './components/list-customers/list-custome
 import { AllCustomersComponent } from './components/all-customers/all-customers.component';
 import { FindCustomerComponent } from './components/find-customer/find-customer.component';
 import { ProfileUserComponent } from './components/profile-user/profile-user.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,8 +38,9 @@ import { ProfileUserComponent } from './components/profile-user/profile-user.com
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
-    HttpClientModule
+    NgbModule,
   ],
   providers: [
     authInterceptorProviders,
