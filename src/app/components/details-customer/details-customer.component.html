@@ -1,7 +1,7 @@
 <div class="container" style="width:800px">
     <h2>Customer Details</h2>
     <div *ngIf="hasError" class="alert alert-danger" style="white-space: pre-line">{{errorMessage}}</div>
-    <!--<div *ngIf="submitted" class="alert alert-success">Customer added succesfully.</div>-->
+    <div *ngIf="submitted" class="alert alert-success">Customer details updated succesfully.</div>
 
     <table>
         <tr>
@@ -24,13 +24,19 @@
                 <td *ngIf="!isEditing">{{customer.lastname}}</td>
                 <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.lastname"></td>
             </tr>
-            <tr><td>Date of Birth:</td>
-                <td *ngIf="!isEditing">{{customer.dateofbirth | date : "mediumDate"}}</td>
-                <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.dateofbirth"></td>
-            </tr>
             <tr *ngIf="!isEditing"><td>Age:</td>
                 <td>{{customer.age}}</td>
             </tr>
+
+            <tr *ngIf="!isEditing"><td>Date of Birth:</td>
+                <td *ngIf="!isEditing">{{customer.dateofbirth | date : "mediumDate"}}</td>
+            </tr>
+            <tr *ngIf="isEditing">
+                <td style="vertical-align: top;"><label for="dateofbirth">Date of Birth:</label></td>
+                <td><ngb-datepicker [(ngModel)]="datePickerSetDate" id="dateofbirth"
+                        [maxDate]="datePickerMaxDate" [startDate]="datePickerSetDate" #d></ngb-datepicker></td>
+            </tr>
+
             <tr *ngIf="!isEditing"><td>Address:</td>
                 <td>{{customerAddress(customer)}}</td>
             </tr>

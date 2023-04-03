@@ -15,8 +15,9 @@
                 <td><input [(ngModel)]="customer.lastname" id="lastname" placeholder="Last Name"/></td>
             </tr>
             <tr>
-                <td><label for="dateofbirth">Date of Birth:</label></td>
-                <td><input [(ngModel)]="customer.dateofbirth" id="dateofbirth" placeholder="Date of Birth"/></td>
+                <td style="vertical-align: top;"><label for="dateofbirth">Date of Birth:</label></td>
+                <td><ngb-datepicker [(ngModel)]="customer.dateofbirth" id="dateofbirth"
+                        [maxDate]="datePickerMaxDate" #d></ngb-datepicker></td>
             </tr>
             <tr>
                 <td><label for="streetName">Street Name:</label></td>

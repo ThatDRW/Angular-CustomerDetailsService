@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
+
 import { HTTP_ROOT } from 'src/app/href-constants.constants';
+
 import { Address } from 'src/app/models/address.model';
-import { ErrorResponseUtilService as ErrorResponseUtilService } from 'src/app/helpers/errorresponseutil.service';
+import { ErrorResponseUtilService} from 'src/app/helpers/errorresponseutil.service';
+import { NgbDate, NgbCalendarGregorian } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-customer',
@@ -26,17 +29,24 @@ export class AddCustomerComponent implements OnInit {
     errorResponse = undefined;
     submitted = false;
 
+    datePickerMaxDate : NgbDate;
+
     constructor(
         private customerService: CustomerService,
         private errorHelper: ErrorResponseUtilService,
-    ) { }
+    ) {
+        let today = new NgbCalendarGregorian().getToday();
+        this.datePickerMaxDate = today;
+    }
 
     ngOnInit(): void {
         this.customer.address = new Address();
+        this.datePickerMaxDate = (NgbDate.from({day: 2, month:4, year: 2023}) as NgbDate);
     }
 
     addCustomer() : void {
         const data = CustomerService.datafyCustomer(this.customer, false);
+        console.warn(data);
         console.warn(data.address);
 
         console.log("Adding customer with info " + data);

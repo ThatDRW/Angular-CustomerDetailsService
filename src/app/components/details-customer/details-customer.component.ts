@@ -1,3 +1,4 @@
+import { NgbDate, NgbCalendarGregorian } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ErrorResponseUtilService } from 'src/app/helpers/errorresponseutil.service';
@@ -30,18 +31,25 @@ export class DetailsCustomerComponent implements OnInit {
     }
 
     getId : string | null = '';
-    hasError = false;
-    errorMessage = '';
     isViewingCustomer = false;
     isEditing = false;
-    submitted = false;
 
+    submitted = false;
+    hasError = false;
+    errorMessage = '';
+
+    datePickerMaxDate : NgbDate;
+    datePickerSetDate : NgbDate;
 
     constructor(
         private customerService: CustomerService,
         private route: ActivatedRoute,
         private errorHelper: ErrorResponseUtilService,
-    ) { }
+    ) {
+        let today = new NgbCalendarGregorian().getToday();
+        this.datePickerMaxDate = today;
+        this.datePickerSetDate = today;
+    }
 
     ngOnInit() : void {
         if (this.route.snapshot.paramMap.has('id')) {
@@ -60,7 +68,8 @@ export class DetailsCustomerComponent implements OnInit {
 
                 this.isViewingCustomer = true;
                 this.customer = CustomerService.custofyData(res);
-                this.submitted = false;
+
+                this.datePickerSetDate = this.toNgbDate(this.customer)!;
 
                 console.log(res);
             },
@@ -80,6 +89,7 @@ export class DetailsCustomerComponent implements OnInit {
     }
 
     saveCustomer() : void {
+        this.customer.dateofbirth = this.toJavaDate(this.datePickerSetDate);
         const data = CustomerService.datafyCustomer(this.customer, true);
 
         this.customerService.addCustomer(data)
@@ -90,6 +100,12 @@ export class DetailsCustomerComponent implements OnInit {
                 this.getCustomer();
 
                 console.log(res);
+                console.info("submitted: " + this.submitted)
+
+                setTimeout(() => {
+                    console.warn("saveCustomer() Timeout");
+                    this.submitted = false;
+                }, 5000);
             },
             error: (e) => {
                 this.hasError = true;
@@ -109,5 +125,22 @@ export class DetailsCustomerComponent implements OnInit {
     customerAddress(data: any) {
         const address = (data as Customer).address;
         return address?.streetName + " " + address?.houseNumber + ", " + address?.zipCode + " " + address?.city;
+    }
+
+    toNgbDate(data : any) {
+        let doB = data.dateofbirth;
+        let date = new Date(doB);
+
+        return NgbDate.from({   year: date.getFullYear(),
+                                month: date.getMonth() + 1,
+                                day: date.getDate()
+                            });
+    }
+
+    toJavaDate(data : any) {
+        let ngb = (data as NgbDate);
+        let date = new Date(ngb.year, ngb.month-1, ngb.day);
+
+        return date;
     }
 }
