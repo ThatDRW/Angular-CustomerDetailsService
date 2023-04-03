@@ -1,15 +1,16 @@
-<div class="container" style="width:800px">
+<div class="container" style="width:600px">
     <h2>Customer Details</h2>
     <div *ngIf="hasError" class="alert alert-danger" style="white-space: pre-line">{{errorMessage}}</div>
     <div *ngIf="submitted" class="alert alert-success">Customer details updated succesfully.</div>
 
-    <table>
-        <tr>
-            <td class="align-bottom"><input [(ngModel)]="getId" id="getid" placeholder="Enter Id" /><br/><br/></td>
-            <td class="align-top"><button type="button" class="btn btn-primary" (click)="getCustomer()">Fetch Details</button></td>
-        </tr>
-    </table>
-    <br/>
+    <div class="input-group form-floating mb-3">
+        <span class="input-group-text">CID#</span>
+        <div class="form-floating">
+            <input type="text" [(ngModel)]="getId" id="getid" class="form-control" placeholder="Enter Customer ID">
+            <label for="getid">Enter Customer ID</label>
+        </div>
+        <button type="button" class="btn btn-primary" id="getButton" (click)="getCustomer()">Get Customer Details</button>
+    </div>
 
     <div *ngIf="isViewingCustomer">
         <div class="form-floating mb-3">
