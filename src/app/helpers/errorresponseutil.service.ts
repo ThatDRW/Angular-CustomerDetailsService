@@ -12,6 +12,8 @@ export class ErrorResponseUtilService {
     ) { }
 
     handleError(e : any) : string {
+        if (!e.error)
+            return "ErrorResponseUtilService could not resolve this ErrorResponse."
         let errorResponse = e.error;
         let errorMessage = this.parseErrorResponse(errorResponse);
         return errorMessage;
