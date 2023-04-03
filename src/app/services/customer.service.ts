@@ -10,17 +10,9 @@ export class CustomerService {
 
     private baseUrl = "http://localhost:8080/customer";
 
-    constructor(private http: HttpClient) { }
-
-    /* To implement:
-    - Add Customer
-        - View Customer
-    - Update Customer
-    - All Customers
-        - Click to View Customer?
-    - Find Customer by Name
-        - Also to View Customer
-    */
+    constructor(
+        private http: HttpClient,
+    ) { }
 
     addCustomer(data: any): Observable<any> {
         return this.http.post<Customer>(this.baseUrl, data, {observe: 'response'});
@@ -56,6 +48,7 @@ export class CustomerService {
     After the first code review, I also added the age calculation here.
     */
     public static datafyCustomer(customer:Customer, includeId:boolean) {
+
         if (includeId) {
             const data = {
                 id: customer.id,
@@ -91,4 +84,5 @@ export class CustomerService {
         }
         return customer;
     }
+
 }
