@@ -13,6 +13,10 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class DetailsCustomerComponent implements OnInit {
 
+    BASE_FIELD_CLASS = "form-control";
+    READ_ONLY_FIELD_CLASS = "form-control-plaintext";
+    MSG_FIELD_ALTERED = "<Field Altered>";
+
     customer : Customer = {
         id: undefined,
         firstname: undefined,
@@ -37,6 +41,7 @@ export class DetailsCustomerComponent implements OnInit {
     submitted = false;
     hasError = false;
     errorMessage = '';
+    fieldMessages : Map<string,string> | undefined = undefined;
 
     datePickerMaxDate : NgbDate;
     datePickerSetDate : NgbDate;
@@ -94,6 +99,8 @@ export class DetailsCustomerComponent implements OnInit {
     }
 
     saveCustomer() : void {
+        let dateBackup = this.customer.dateofbirth;
+
         this.customer.dateofbirth = this.toJavaDate(this.datePickerSetDate);
         const data = CustomerService.datafyCustomer(this.customer, true);
 
@@ -113,11 +120,18 @@ export class DetailsCustomerComponent implements OnInit {
             error: (e) => {
                 this.hasError = true;
                 this.errorMessage = this.errorHelper.handleError(e);
+                this.updateFieldMessages();
 
                 console.error(e);
                 console.log(e.error.status + " " + e.error.title);
             }
         });
+    }
+
+    updateFieldMessages() {
+        this.fieldMessages = this.errorHelper.parseFieldMessages(this.errorMessage!);
+
+        console.info(this.fieldMessages);
     }
 
     cancelEdit() : void {
@@ -142,5 +156,30 @@ export class DetailsCustomerComponent implements OnInit {
         let date = new Date(ngb.year, ngb.month-1, ngb.day);
 
         return date;
+    }
+
+    getFieldClass(fieldName : string) {
+        if (this.fieldMessages == undefined)
+            return this.isEditing ? this.BASE_FIELD_CLASS : this.READ_ONLY_FIELD_CLASS;
+
+        if (!this.fieldMessages.has(fieldName))
+            return ( this.isEditing ? this.BASE_FIELD_CLASS : this.READ_ONLY_FIELD_CLASS ) + " is-valid";
+
+        if (this.fieldMessages.get(fieldName) == this.MSG_FIELD_ALTERED)
+            return this.isEditing ? this.BASE_FIELD_CLASS : this.READ_ONLY_FIELD_CLASS;
+
+        return ( this.isEditing ? this.BASE_FIELD_CLASS : this.READ_ONLY_FIELD_CLASS ) + " is-invalid";
+    }
+
+    fieldAltered(fieldName : string) {
+        console.info("fieldAltered >> " + fieldName + " changed")
+        if (this.fieldMessages == undefined)
+            return;
+
+        if (!this.fieldMessages.has(fieldName))
+            return;
+
+        this.fieldMessages.set(fieldName, this.MSG_FIELD_ALTERED);
+        return;
     }
 }
