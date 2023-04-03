@@ -1,10 +1,15 @@
-<h2>Find Customer</h2>
-<div *ngIf="hasError" class="alert alert-danger" style="white-space: pre-line">{{errorMessage}}</div>
-<table>
-    <tr>
-        <td class="align-bottom"><input [(ngModel)]="searchQuery" id="getid" placeholder="Enter Name (case sensitive)" /><br/><br/></td>
-        <td class="align-top"><button type="button" class="btn btn-primary" (click)="searchButtonClick()">Search</button></td>
-    </tr>
-</table>
-<br/>
-<app-list-customers [viewAll]="false" [customerList]="customerList"></app-list-customers>
+<div class="container" style="width:800px">
+    <h2>Find Customer</h2>
+    <div *ngIf="hasError" class="alert alert-danger" style="white-space: pre-line">{{errorMessage}}</div>
+
+    <div class="input-group form-floating mb-3">
+        <span class="input-group-text">LOOK FOR</span>
+        <div class="form-floating">
+            <input type="text" [(ngModel)]="searchQuery" id="searchQuery" class="form-control" placeholder="Search Query">
+            <label for="searchQuery">Enter (partial) first- or last-name (case sensitive)</label>
+        </div>
+        <button type="button" class="btn btn-primary" id="getButton" (click)="searchButtonClick()">Search</button>
+    </div>
+    <br/>
+    <app-list-customers [viewAll]="false" [customerList]="customerList"></app-list-customers>
+</div>
