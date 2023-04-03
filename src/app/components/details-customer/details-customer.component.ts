@@ -40,6 +40,8 @@ export class DetailsCustomerComponent implements OnInit {
 
     datePickerMaxDate : NgbDate;
     datePickerSetDate : NgbDate;
+    dateReadable : string;
+    dateBackup : any;
 
     constructor(
         private customerService: CustomerService,
@@ -49,6 +51,7 @@ export class DetailsCustomerComponent implements OnInit {
         let today = new NgbCalendarGregorian().getToday();
         this.datePickerMaxDate = today;
         this.datePickerSetDate = today;
+        this.dateReadable = this.toJavaDate(today).toDateString();
     }
 
     ngOnInit() : void {
@@ -70,12 +73,14 @@ export class DetailsCustomerComponent implements OnInit {
                 this.customer = CustomerService.custofyData(res);
 
                 this.datePickerSetDate = this.toNgbDate(this.customer)!;
+                this.dateReadable = this.toJavaDate(this.datePickerSetDate).toDateString();
 
                 console.log(res);
             },
             error: (e) => {
                 this.hasError = true;
                 this.errorMessage = this.errorHelper.handleError(e);
+                this.isViewingCustomer = false;
 
                 console.error(e);
                 console.log(e.error.status + " " + e.error.title);
@@ -100,12 +105,10 @@ export class DetailsCustomerComponent implements OnInit {
                 this.getCustomer();
 
                 console.log(res);
-                console.info("submitted: " + this.submitted)
 
                 setTimeout(() => {
-                    console.warn("saveCustomer() Timeout");
                     this.submitted = false;
-                }, 5000);
+                }, 2500);
             },
             error: (e) => {
                 this.hasError = true;
@@ -131,10 +134,7 @@ export class DetailsCustomerComponent implements OnInit {
         let doB = data.dateofbirth;
         let date = new Date(doB);
 
-        return NgbDate.from({   year: date.getFullYear(),
-                                month: date.getMonth() + 1,
-                                day: date.getDate()
-                            });
+        return NgbDate.from({ year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate() });
     }
 
     toJavaDate(data : any) {

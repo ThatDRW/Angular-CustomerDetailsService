@@ -12,47 +12,40 @@
     <br/>
 
     <div *ngIf="isViewingCustomer">
-        <table class="table table-sm">
-            <tr><td>Id:</td>
-                <td>{{customer.id}}</td>
-            </tr>
-            <tr><td>First Name:</td>
-                <td *ngIf="!isEditing">{{customer.firstname}}</td>
-                <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.firstname"></td>
-            </tr>
-            <tr><td>Last Name:</td>
-                <td *ngIf="!isEditing">{{customer.lastname}}</td>
-                <td *ngIf="isEditing"><input type="text" [(ngModel)]="customer.lastname"></td>
-            </tr>
-            <tr *ngIf="!isEditing"><td>Age:</td>
-                <td>{{customer.age}}</td>
-            </tr>
-
-            <tr *ngIf="!isEditing"><td>Date of Birth:</td>
-                <td *ngIf="!isEditing">{{customer.dateofbirth | date : "mediumDate"}}</td>
-            </tr>
-            <tr *ngIf="isEditing">
-                <td style="vertical-align: top;"><label for="dateofbirth">Date of Birth:</label></td>
-                <td><ngb-datepicker [(ngModel)]="datePickerSetDate" id="dateofbirth"
-                        [maxDate]="datePickerMaxDate" [startDate]="datePickerSetDate" #d></ngb-datepicker></td>
-            </tr>
-
-            <tr *ngIf="!isEditing"><td>Address:</td>
-                <td>{{customerAddress(customer)}}</td>
-            </tr>
-            <tr *ngIf="isEditing"><td>Street Name:</td>
-                <td><input type="text" [(ngModel)]="customer.address!.streetName" name="streetName" placeholder="Street Name"></td>
-            </tr>
-            <tr *ngIf="isEditing"><td>House Number:</td>
-                <td><input type="text" [(ngModel)]="customer.address!.houseNumber" name="houseNumber" placeholder="House Number"></td>
-            </tr>
-            <tr *ngIf="isEditing"><td>Zip Code:</td>
-                <td><input type="text" [(ngModel)]="customer.address!.zipCode" name="zipCode" placeholder="Zip Code"></td>
-            </tr>
-            <tr *ngIf="isEditing"><td>City:</td>
-                <td><input type="text" [(ngModel)]="customer.address!.city" name="city" placeholder="City"></td>
-            </tr>
-        </table>
+        <div class="form-floating mb-3">
+            <input readonly type="text" [(ngModel)]="customer.id" id="id" class="form-control-plaintext" placeholder="Id"/>
+            <label for="id">Id:</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input [readonly]="!isEditing" type="text" [(ngModel)]="customer.firstname" id="firstname" [className]="isEditing ? 'form-control' : 'form-control-plaintext'" placeholder="First Name"/>
+            <label for="firstname">First Name:</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input [readonly]="!isEditing" type="text" [(ngModel)]="customer.lastname" id="lastname" [className]="isEditing ? 'form-control' : 'form-control-plaintext'" placeholder="Last Name"/>
+            <label for="lastname">Last Name:</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input *ngIf="!isEditing" [readonly]="!isEditing" type="text" [(ngModel)]="dateReadable" id="dateofbirth" [className]="isEditing ? 'form-control' : 'form-control-plaintext'" placeholder="Date of Birth"/>
+            <input *ngIf="isEditing" ngbDatepicker #dob="ngbDatepicker" [readonly]="!isEditing" type="text" [(ngModel)]="datePickerSetDate" id="dateofbirth" [className]="isEditing ? 'form-control' : 'form-control-plaintext'"
+                placeholder="Date of Birth" (click)="dob.toggle()"/>
+            <label for="dateofbirth">Date of Birth:</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input [readonly]="!isEditing" type="text" [(ngModel)]="customer.address!.streetName" id="streetName" [className]="isEditing ? 'form-control' : 'form-control-plaintext'" placeholder="Street Name"/>
+            <label for="streetName">Street Name:</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input [readonly]="!isEditing" type="text" [(ngModel)]="customer.address!.houseNumber" id="houseNumber" [className]="isEditing ? 'form-control' : 'form-control-plaintext'" placeholder="House Number"/>
+            <label for="houseNumber">House Number:</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input [readonly]="!isEditing" type="text" [(ngModel)]="customer.address!.zipCode" id="zipCode" [className]="isEditing ? 'form-control' : 'form-control-plaintext'" placeholder="Zip Code"/>
+            <label for="zipCode">Zip Code:</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input [readonly]="!isEditing" type="text" [(ngModel)]="customer.address!.city" id="city" [className]="isEditing ? 'form-control' : 'form-control-plaintext'" placeholder="City"/>
+            <label for="city">City:</label>
+        </div>
 
         <br/>
         <button type="button" class="btn btn-primary" *ngIf="!isEditing" (click)="editCustomer()">Edit Details</button>
