@@ -1,22 +1,20 @@
-<div class="container" style="width:800px">
+<div class="container" style="width:400px">
     <h2>Register new User</h2>
     <div *ngIf="hasError" class="alert alert-danger" style="white-space: pre-line">{{errorMessage}}</div>
     <div *ngIf="submitted" class="alert alert-success">User added succesfully. You can now login.</div>
 
     <div *ngIf="!submitted">
-        <table class="table table-sm">
-            <tr>
-                <td><label for="username">Username:</label></td>
-        <td><input [(ngModel)]="user.username" placeholder="Username"/></td>
-    </tr>
-    <tr>
-        <td><label for="password">Password:</label></td>
-        <td><input [(ngModel)]="user.password" placeholder="Password"/></td>
-    </tr>
-</table>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" [(ngModel)]="user.username" id="username" placeholder="Username"/>
+            <label for="username">Username:</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" [(ngModel)]="user.password" id="password" placeholder="Password"/>
+            <label for="password">Password:</label>
+        </div>
 
-<button type="button" class="btn btn-primary" (click)="registerUser()">Register</button>
-</div>
+        <button type="button" class="btn btn-primary" (click)="registerUser()">Register</button>
+    </div>
 
 <div *ngIf="submitted && !hasError">Go to User Login: <button type="button" class="btn btn-success" (click)="gotoLogin()">Login</button></div>
 </div>
