@@ -52,18 +52,14 @@ export class AddCustomerComponent implements OnInit {
 
         this.customer.dateofbirth = this.toJavaDate(this.customer.dateofbirth);
         const data = CustomerService.datafyCustomer(this.customer, false);
-        console.warn(data);
-        console.warn(data.address);
-
-        console.log("Adding customer with info " + data);
 
         this.customerService.addCustomer(data)
         .subscribe({
             next: (res) => {
-                console.log(res);
-
                 this.hasError = false;
                 this.submitted = true;
+
+                console.log(res);
 
                 this.delayedReload();
             },
@@ -109,7 +105,6 @@ export class AddCustomerComponent implements OnInit {
 
         if (this.fieldMessages.get(fieldName) == this.MSG_FIELD_ALTERED)
             return this.BASE_FIELD_CLASS;
-
 
         return this.BASE_FIELD_CLASS + " is-invalid";
     }
