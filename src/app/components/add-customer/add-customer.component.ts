@@ -15,6 +15,9 @@ import { NgbDate, NgbCalendarGregorian } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AddCustomerComponent implements OnInit {
 
+    BASE_FIELD_CLASS = "form-control";
+    MSG_FIELD_ALTERED = "<Field Altered>";
+
     customer:Customer = {
         id: undefined,
         firstname: undefined,
@@ -70,7 +73,7 @@ export class AddCustomerComponent implements OnInit {
 
                 // Rollback Conversion.
                 this.customer.dateofbirth = dateBackup;
-                //this.updateFieldMessages();
+                this.updateFieldMessages();
 
                 console.error(e);
                 console.log(e.error.status + " " + e.error.title);
@@ -95,5 +98,31 @@ export class AddCustomerComponent implements OnInit {
         let date = new Date(ngb.year, ngb.month-1, ngb.day);
 
         return date;
+    }
+
+    getFieldClass(fieldName : string) {
+        if (this.fieldMessages == undefined)
+            return this.BASE_FIELD_CLASS;
+
+        if (!this.fieldMessages.has(fieldName))
+            return this.BASE_FIELD_CLASS + " is-valid";
+
+        if (this.fieldMessages.get(fieldName) == this.MSG_FIELD_ALTERED)
+            return this.BASE_FIELD_CLASS;
+
+
+        return this.BASE_FIELD_CLASS + " is-invalid";
+    }
+
+    fieldAltered(fieldName : string) {
+        console.info("fieldAltered >> " + fieldName + " changed")
+        if (this.fieldMessages == undefined)
+            return;
+
+        if (!this.fieldMessages.has(fieldName))
+            return;
+
+        this.fieldMessages.set(fieldName, this.MSG_FIELD_ALTERED);
+        return;
     }
 }
