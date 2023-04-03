@@ -7,6 +7,7 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Date of Birth</th>
+        <th>Age</th>
         <th>Address</th>
     </tr>
     <tr class=""
@@ -14,9 +15,10 @@
         (click)="showCustomerDetails(customer, i)" >
 
         <td>{{customer.id}}</td>
-        <td>{{customer.firstName}}</td>
-        <td>{{customer.lastName}}</td>
-        <td>{{customer.dateOfBirth | date : "mediumDate"}}</td>
+        <td>{{customer.firstname}}</td>
+        <td>{{customer.lastname}}</td>
+        <td>{{customer.dateofbirth | date : "mediumDate"}}</td>
+        <td>{{customer.age}}</td>
         <td>{{customerAddress(customer)}}</td>
     </tr>
 </table>

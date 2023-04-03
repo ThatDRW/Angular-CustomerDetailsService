@@ -43,6 +43,8 @@ export class ListCustomersComponent implements OnInit {
                     this.errorMessage = '';
                     this.customerList = res;
 
+                    this.batchCustofy();
+
                     console.log(res);
                 },
                 error: (e) => {
@@ -67,4 +69,16 @@ export class ListCustomersComponent implements OnInit {
         return address?.streetName + " " + address?.houseNumber + ", " + address?.zipCode + " " + address?.city;
     }
 
+    batchCustofy() {
+        if (this.customerList == undefined)
+            return;
+
+        // NOTE : Typecasting 'unknown' dataformat ARRAYS to pre-determined object[]. WHAT.
+        let length = (this.customerList as Customer[]).length;
+
+        // Custofy each entry of the list to calculate Age.
+        for (var i=0; i < length; i++) {
+            (this.customerList as Customer[])[i] = CustomerService.custofyData((this.customerList as Customer[]).at(i)!);
+        }
+    }
 }
