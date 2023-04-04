@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ErrorResponseUtilService } from 'src/app/helpers/errorresponseutil.service';
+import { ErrorResponseUtilService } from 'src/app/core/helpers/errorresponseutil.service';
 import { HTTP_ROOT } from 'src/app/href-constants.constants';
-import { User } from 'src/app/models/user.model';
-import { TokenStorageService } from 'src/app/services/token-storage.service';
-import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/core/models/user.model';
+import { TokenStorageService } from 'src/app/core/services/token-storage.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-login-user',

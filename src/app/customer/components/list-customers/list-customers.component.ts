@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ErrorResponseUtilService } from 'src/app/helpers/errorresponseutil.service';
-import { Customer } from 'src/app/models/customer.model';
-import { CustomerService } from 'src/app/services/customer.service';
+import { ErrorResponseUtilService } from 'src/app/core/helpers/errorresponseutil.service';
+import { Customer } from 'src/app/core/models/customer.model';
+import { CustomerService } from 'src/app/core/services/customer.service';
 
 @Component({
   selector: 'app-list-customers',
