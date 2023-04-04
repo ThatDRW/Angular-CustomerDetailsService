@@ -14,3 +14,5 @@ RUN ls
 FROM nginx:1.23.4-alpine
 EXPOSE 80
 COPY --from=BUILDER /app/dist/angular-customerdetailsservice /usr/share/nginx/html
+# Copy nginx configuration to server container.
+COPY --from=BUILDER /app/default.conf /etc/nginx/conf.d/default.conf
