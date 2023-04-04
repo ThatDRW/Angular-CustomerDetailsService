@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP_ROOT } from 'src/app/href-constants.constants';
-import { UserService } from 'src/app/services/user.service';
-import { User } from '../../models/user.model';
-import { ErrorResponseUtilService } from 'src/app/helpers/errorresponseutil.service';
+import { UserService } from 'src/app/core/services/user.service';
+import { User } from 'src/app/core/models/user.model';
+import { ErrorResponseUtilService } from 'src/app/core/helpers/errorresponseutil.service';
 
 
 @Component({

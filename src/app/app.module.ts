@@ -5,42 +5,31 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { LandingComponent } from './components/landing/landing.component';
-import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { LoginUserComponent } from './components/login-user/login-user.component';
+import { NavigationBarComponent } from './shared/components/navigation-bar/navigation-bar.component';
 
-import { authInterceptorProviders } from './helpers/auth.interceptor';
-import { LogoutUserComponent } from './components/logout-user/logout-user.component';
-import { AddCustomerComponent } from './components/add-customer/add-customer.component';
-import { DetailsCustomerComponent } from './components/details-customer/details-customer.component';
-import { ListCustomersComponent } from './components/list-customers/list-customers.component';
-import { AllCustomersComponent } from './components/all-customers/all-customers.component';
-import { FindCustomerComponent } from './components/find-customer/find-customer.component';
-import { ProfileUserComponent } from './components/profile-user/profile-user.component';
+import { authInterceptorProviders } from './core/helpers/auth.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CoreModule } from './core/core.module';
+import { UserModule } from './user/user.module';
+import { CustomerModule } from './customer/customer.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterUserComponent,
-    LandingComponent,
     NavigationBarComponent,
-    LoginUserComponent,
-    LogoutUserComponent,
-    AddCustomerComponent,
-    DetailsCustomerComponent,
-    ListCustomersComponent,
-    AllCustomersComponent,
-    FindCustomerComponent,
-    ProfileUserComponent,
+    LandingComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     NgbModule,
+    CoreModule,
+    AppRoutingModule,
+    UserModule,
+    CustomerModule,
   ],
   providers: [
     authInterceptorProviders,

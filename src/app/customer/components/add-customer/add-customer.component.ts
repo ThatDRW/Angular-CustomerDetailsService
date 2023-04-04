@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from 'src/app/models/customer.model';
-import { CustomerService } from 'src/app/services/customer.service';
+import { Customer } from 'src/app/core/models/customer.model';
+import { CustomerService } from 'src/app/core/services/customer.service';
 
 import { HTTP_ROOT } from 'src/app/href-constants.constants';
 
-import { Address } from 'src/app/models/address.model';
-import { ErrorResponseUtilService} from 'src/app/helpers/errorresponseutil.service';
+import { Address } from 'src/app/core/models/address.model';
+import { ErrorResponseUtilService} from 'src/app/core/helpers/errorresponseutil.service';
 import { NgbDate, NgbCalendarGregorian } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
