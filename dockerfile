@@ -1,6 +1,22 @@
-FROM node:16.19.1-alpine as BUILDER
+#######################################
+#               GITHUB                #
+#######################################
+FROM node:16.19.1-alpine as github
+RUN cat /etc/os-release
+RUN apk update \
+ && apk add git
 
-COPY . /app
+WORKDIR /app
+RUN git clone https://github.com/ThatDRW/Angular-CustomerDetailsService.git
+WORKDIR /app/Angular-CustomerDetailsService
+RUN find . -maxdepth 1 -exec mv {} .. \;
+
+
+#######################################
+#               BUILDER               #
+#######################################
+FROM github AS builder
+# COPY . /app
 WORKDIR /app
 
 RUN npm install
@@ -11,8 +27,11 @@ WORKDIR /app/dist
 RUN ls
 
 
+#######################################
+#             DEPLOYMENT              #
+#######################################
 FROM nginx:1.23.4-alpine
 EXPOSE 80
-COPY --from=BUILDER /app/dist/angular-customerdetailsservice /usr/share/nginx/html
+COPY --from=builder /app/dist/angular-customerdetailsservice /usr/share/nginx/html
 # Copy nginx configuration to server container.
-COPY --from=BUILDER /app/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/default.conf /etc/nginx/conf.d/default.conf
