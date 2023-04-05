@@ -7,6 +7,9 @@ RUN apk update \
  && apk add git
 
 WORKDIR /app
+
+# Cachebusting to stay up-to-date.
+ADD https://api.github.com/repos/ThatDRW/Java-CustomerDetailsService/git/refs/heads/master version.json
 RUN git clone https://github.com/ThatDRW/Angular-CustomerDetailsService.git
 WORKDIR /app/Angular-CustomerDetailsService
 RUN find . -maxdepth 1 -exec mv {} .. \;
