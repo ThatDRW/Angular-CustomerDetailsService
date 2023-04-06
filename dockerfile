@@ -1,22 +1,8 @@
 #######################################
-#               GITHUB                #
-#######################################
-FROM node:16.19.1-alpine as github
-RUN cat /etc/os-release
-RUN apk update \
- && apk add git
-
-WORKDIR /app
-RUN git clone https://github.com/ThatDRW/Angular-CustomerDetailsService.git
-WORKDIR /app/Angular-CustomerDetailsService
-RUN find . -maxdepth 1 -exec mv {} .. \;
-
-
-#######################################
 #               BUILDER               #
 #######################################
-FROM github AS builder
-# COPY . /app
+FROM node:16.19.1-alpine as builder
+COPY . /app
 WORKDIR /app
 
 RUN npm install
