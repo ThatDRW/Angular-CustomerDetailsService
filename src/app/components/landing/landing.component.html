@@ -180,9 +180,12 @@
             <div id="collapseOneChanges" class="accordion-collapse collapse" aria-labelledby="headingOneChanges"
                 data-bs-parent="#accordionChanges">
                 <div class="accordion-body">
-                    List Description<br /><br />
                     <ul>
-                        <li></li>
+                        <li>[Angular]   Save DoB instead of Age. Still show age aswell. Customer model updated.</li>
+                        <li>[Angular]   Calculating Age implemented in Customer.service.</li>
+                        <li>[Angular]   Updated List-Customers and Detail-Customer components to show DoB and Age.</li>
+                        <li>[Java]      Save DoB instead of Age. Customer entity updated.</li>
+                        <li>[Java]      Fix Unit and Integration tests after implementing Date of Birth.</li>
                     </ul>
                 </div>
             </div>
@@ -197,9 +200,10 @@
             <div id="collapseTwoChanges" class="accordion-collapse collapse" aria-labelledby="headingTwoChanges"
                 data-bs-parent="#accordionChanges">
                 <div class="accordion-body">
-                    List Description<br /><br />
                     <ul>
-                        <li></li>
+                        <li>[Angular]   Added @ng-bootstrap/ng-bootstrap for DatePicker widgets. (ng add)</li>
+                        <li>[Angular]   Implementation of NgbDatepicker for Adding- and Editing Customers' Date of Birth.</li>
+                        <li>[Angular]   Implementation of Type-Conversion between Java Date and NgbDate Types.</li>
                     </ul>
                 </div>
             </div>
@@ -214,9 +218,18 @@
             <div id="collapseThreeChanges" class="accordion-collapse collapse" aria-labelledby="headingThreeChanges"
                 data-bs-parent="#accordionChanges">
                 <div class="accordion-body">
-                    List Description<br /><br />
                     <ul>
-                        <li></li>
+                        <li>[Angular]   Restructured Directories and Components into Angular Modules. (core, shared, user, customer)</li>
+                        <li>[Java]      Use Random Port for testing Spring-Boot.</li>
+                        <li>[Java]      Fixed Service Interface / Impl Folder structure. (i.e. services/CustomerService and Impl.)</li>
+                        <li>[Java]      Fixed/Rewritten Deprecated code.</li>
+                        <li>[Java]      Return correct HTTP code on update address api call. (OK, not CREATED)</li>
+                        <li>[Java]      Migrate from JUnit 4 to JUnit 5.</li>
+                        <li>[JUnit]     Make unit-test folder structure compliant.</li>
+                        <li>[JUnit]     Fixed testcases broken after Address Class implementation.</li>
+                        <li>[JUnit]     Write Address unit tests.</li>
+                        <li>[JUnit]     Use @Before to Arrange data for test-cases.</li>
+                        <li>[Maven]     Removed Spring-Migrator Dependency.</li>
                     </ul>
                 </div>
             </div>
@@ -231,9 +244,15 @@
             <div id="collapseFourChanges" class="accordion-collapse collapse" aria-labelledby="headingFourChanges"
                 data-bs-parent="#accordionChanges">
                 <div class="accordion-body">
-                    List Description<br /><br />
                     <ul>
-                        <li></li>
+                        <li>[Angular]   Implementation of Address model and updating codebase.</li>
+                        <li>[Angular]   Updated app-components touching Customer.Address.</li>
+                        <li>[Angular]   Merge (AddressTypeMigration) to (master)</li>
+                        <li>[Java]      Implementation of Address class and updating codebase.</li>
+                        <li>[Java]      Implementation of Address Validators. Make basic checks to verify NL Address format.</li>
+                        <li>[Java]      Implementation of JPA changes to reflect new Database Structure.</li>
+                        <li>[Java]      Merge (AddressTypeMigration) to (master)</li>
+                        <li>[JUnit]     Unit Test-Cases for Address Validators.</li>
                     </ul>
                 </div>
             </div>
@@ -242,15 +261,20 @@
             <h2 class="accordion-header" id="headingFiveChanges">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseFiveChanges" aria-expanded="false" aria-controls="collapseFiveChanges">
-                    Improved ErrorResponse Handling
+                    Improved ErrorResponse Handling and User Feedback
                 </button>
             </h2>
             <div id="collapseFiveChanges" class="accordion-collapse collapse" aria-labelledby="headingFiveChanges"
                 data-bs-parent="#accordionChanges">
                 <div class="accordion-body">
-                    List Description<br /><br />
                     <ul>
-                        <li></li>
+                        <li>[Angular]   Catch and show Validator Error Messages.</li>
+                        <li>[Angular]   Display Auth and SecurityFilter errors properly.</li>
+                        <li>[Angular]   App-Wide integration of ErrorResponseUtilService to unwrap ResponseBody Validation- and Error-Messages.</li>
+                        <li>[Java]      Send Validator Error Messages back to client. (For Front-End FieldValidation)</li>
+                        <li>[Java]      Add additional ExceptionHandlers to catch all Field Validation Errors.</li>
+                        <li>[Java]      AuthManager / SecurityFilter now returning errors wrapped in ErrorResponse.</li>
+                        <li>[Java]      Check Validator Messages for spelling and consistency.</li>
                     </ul>
                 </div>
             </div>
@@ -265,9 +289,14 @@
             <div id="collapseSixChanges" class="accordion-collapse collapse" aria-labelledby="headingSixChanges"
                 data-bs-parent="#accordionChanges">
                 <div class="accordion-body">
-                    List Description<br /><br />
                     <ul>
-                        <li></li>
+                        <li>[Angular]   Automatically end the session and logout when invalid/expired JWT token is detected.</li>
+                        <li>[Angular]   ErrorResponseHelperUtil now gracefully handles null-references.</li>
+                        <li>[Angular]   Implemented AuthGuard to Module RoutingModules to prevent unauthorized front-end component access.</li>
+                        <li>[Angular]   Implemented Token verification in AuthGuard.</li>
+                        <li>[Java]      Clean-Up SecurityConfig.</li>
+                        <li>[Java]      (Docker Only Issue) Fix CORS(?) blocking access to swagger-ui in Docker.</li>
+                        <li>[Java]      CVE-2018-1000873 CWE-20 - Fixed in jackson-datatype-jsr310 dependency upgrade.</li>
                     </ul>
                 </div>
             </div>
@@ -282,9 +311,10 @@
             <div id="collapseSevenChanges" class="accordion-collapse collapse" aria-labelledby="headingSevenChanges"
                 data-bs-parent="#accordionChanges">
                 <div class="accordion-body">
-                    List Description<br /><br />
                     <ul>
-                        <li></li>
+                        <li>[Angular]   Now using Bootstrap 5.2's 'form-floating' and 'form-control' formats for all Customer Details forms.</li>
+                        <li>[Angular]   Add Labels in Details-Customer component.</li>
+                        <li>[Angular]   Reactive Server-Side Field Validation with Field Highlighting and Response Messages.</li>
                     </ul>
                 </div>
             </div>
@@ -299,9 +329,11 @@
             <div id="collapseEightChanges" class="accordion-collapse collapse" aria-labelledby="headingEightChanges"
                 data-bs-parent="#accordionChanges">
                 <div class="accordion-body">
-                    List Description<br /><br />
                     <ul>
-                        <li></li>
+                        <li>[Angular]   Multi-Staged Dockerfile and dockerignore. Builds from scratch. Pulls most recent source from GitHub.</li>
+                        <li>[Java]      Multi-Staged Dockerfile and dockerignore. Builds from scratch. Pulls most recent source from GitHub.</li>
+                        <li>[Docker]    Docker Compose End-to-End Implementation. Only Docker required to run the docker-compose</li>
+                        <li>[GitHub]    Created Compose-CustomerDetailsService Repo with Java- and Angular-CDS as SubModules.</li>
                     </ul>
                 </div>
             </div>
