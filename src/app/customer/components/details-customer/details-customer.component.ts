@@ -1,10 +1,10 @@
 import { NgbDate, NgbCalendarGregorian } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ErrorResponseUtilService } from 'src/app/core/helpers/errorresponseutil.service';
-import { Address } from 'src/app/core/models/address.model';
-import { Customer } from 'src/app/core/models/customer.model';
-import { CustomerService } from 'src/app/core/services/customer.service';
+import { ErrorResponseUtilService } from '../../../core/helpers/errorresponseutil.service';
+import { Address } from '../../../core/models/address.model';
+import { Customer } from '../../../core/models/customer.model';
+import { CustomerService } from '../../../core/services/customer.service';
 
 @Component({
   selector: 'app-details-customer',

@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterUserComponent } from './register-user.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ErrorResponseUtilService } from '../../../core/helpers/errorresponseutil.service';
+import { UserService } from '../../../core/services/user.service';
+import { FormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('RegisterUserComponent', () => {
   let component: RegisterUserComponent;
@@ -8,7 +13,15 @@ describe('RegisterUserComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterUserComponent ]
+      declarations: [ RegisterUserComponent ],
+      imports: [ HttpClientTestingModule, FormsModule ],
+      providers: [
+        ErrorResponseUtilService,
+        UserService
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ]
     })
     .compileComponents();
 

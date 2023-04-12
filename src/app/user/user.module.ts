@@ -8,6 +8,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreModule } from '../core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -24,6 +25,7 @@ import { CoreModule } from '../core/core.module';
     NgbModule,
     CoreModule,
     UserRoutingModule,
+    HttpClientModule
   ]
 })
 export class UserModule { }

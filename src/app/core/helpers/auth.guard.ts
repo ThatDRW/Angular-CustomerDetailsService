@@ -1,10 +1,13 @@
 import { inject } from "@angular/core";
 
 import { TokenStorageService } from "../services/token-storage.service";
-import { HTTP_ROOT } from "src/app/href-constants.constants";
+import { HTTP_ROOT } from "../../href-constants.constants";
 
 const MSG_AUTH_INVALID = 'Excuse me, Sir, I need you to step out of the line.';
 const MSG_AUTH_ISLEGIT = 'Alright, cause no trouble...';
+const tokenStorage = inject( TokenStorageService );
+
+
 
 const authFailed = (message: string, hadTokenStored: boolean) => {
     console.warn('AUTHGUARD >> ' + MSG_AUTH_INVALID);
@@ -18,7 +21,6 @@ const authFailed = (message: string, hadTokenStored: boolean) => {
 
 const checkTokenStorage = () => {
     console.info('AUTHGUARD >> Checking TokenStorage...');
-    const tokenStorage = inject( TokenStorageService );
 
     let tokenFound = tokenStorage.getToken() ? true : false;
 

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogoutUserComponent } from './logout-user.component';
+import { ErrorResponseUtilService } from '../../../core/helpers/errorresponseutil.service';
 
 describe('LogoutUserComponent', () => {
   let component: LogoutUserComponent;
@@ -8,7 +9,8 @@ describe('LogoutUserComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LogoutUserComponent ]
+      declarations: [ LogoutUserComponent ],
+      providers: [ ErrorResponseUtilService ]
     })
     .compileComponents();
 

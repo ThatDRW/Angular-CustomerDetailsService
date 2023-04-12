@@ -5,6 +5,7 @@ import { DetailsCustomerComponent } from './components/details-customer/details-
 import { AllCustomersComponent } from './components/all-customers/all-customers.component';
 import { FindCustomerComponent } from './components/find-customer/find-customer.component';
 import { authGuard } from '../core/helpers/auth.guard';
+import { AuthGuardGuard } from '../core/helpers/auth-guard.guard';
 
 const oldroutes: Routes = [
   { path: 'customer/add', component: AddCustomerComponent },
@@ -17,7 +18,7 @@ const oldroutes: Routes = [
 
 const routes: Routes = [{
     path: 'customer',
-    canActivateChild: [authGuard],
+    canActivateChild: [AuthGuardGuard],
     children: [
         { path: 'add', component: AddCustomerComponent },
         { path: 'all', component: AllCustomersComponent },

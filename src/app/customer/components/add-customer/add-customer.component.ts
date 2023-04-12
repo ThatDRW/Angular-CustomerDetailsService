@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Customer } from 'src/app/core/models/customer.model';
-import { CustomerService } from 'src/app/core/services/customer.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Customer } from '../../../core/models/customer.model';
+import { CustomerService } from '../../../core/services/customer.service';
 
-import { HTTP_ROOT } from 'src/app/href-constants.constants';
+import { HTTP_ROOT } from '../../../href-constants.constants';
 
-import { Address } from 'src/app/core/models/address.model';
-import { ErrorResponseUtilService} from 'src/app/core/helpers/errorresponseutil.service';
-import { NgbDate, NgbCalendarGregorian } from '@ng-bootstrap/ng-bootstrap';
+import { Address } from '../../../core/models/address.model';
+import { ErrorResponseUtilService} from '../../../core/helpers/errorresponseutil.service';
+import { NgbDate, NgbDatepicker, NgbCalendarGregorian } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-customer',

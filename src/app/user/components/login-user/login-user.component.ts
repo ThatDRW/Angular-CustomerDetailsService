@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ErrorResponseUtilService } from 'src/app/core/helpers/errorresponseutil.service';
-import { HTTP_ROOT } from 'src/app/href-constants.constants';
-import { User } from 'src/app/core/models/user.model';
-import { TokenStorageService } from 'src/app/core/services/token-storage.service';
-import { UserService } from 'src/app/core/services/user.service';
+import { ErrorResponseUtilService } from '../../../core/helpers/errorresponseutil.service';
+import { HTTP_ROOT } from '../../../href-constants.constants';
+import { User } from '../../../core/models/user.model';
+import { TokenStorageService } from '../../../core/services/token-storage.service';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-login-user',
@@ -55,7 +55,7 @@ export class LoginUserComponent implements OnInit {
                     this.submitted = true;
 
                     setTimeout(() => {
-                        window.location.href=HTTP_ROOT;
+                        this.redirect(HTTP_ROOT);
                     }, 2500);
                 },
                 error: (e) => {
@@ -66,6 +66,9 @@ export class LoginUserComponent implements OnInit {
                     console.log(e.error);
                 }
             });
+    }
 
+    private redirect(to:string) : void {
+        window.location.href=to;
     }
 }

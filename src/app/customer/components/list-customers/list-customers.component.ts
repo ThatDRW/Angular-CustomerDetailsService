@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ErrorResponseUtilService } from 'src/app/core/helpers/errorresponseutil.service';
-import { Customer } from 'src/app/core/models/customer.model';
-import { CustomerService } from 'src/app/core/services/customer.service';
+import { ErrorResponseUtilService } from '../../../core/helpers/errorresponseutil.service';
+import { Customer } from '../../../core/models/customer.model';
+import { CustomerService } from '../../../core/services/customer.service';
+import { HTTP_ROOT } from '../../../href-constants.constants';
 
 @Component({
   selector: 'app-list-customers',
@@ -25,7 +25,6 @@ export class ListCustomersComponent implements OnInit {
 
     constructor(
         private customerService : CustomerService,
-        private router : Router,
         private errorHelper : ErrorResponseUtilService,
     ) { }
 
@@ -61,7 +60,8 @@ export class ListCustomersComponent implements OnInit {
     showCustomerDetails(data : any, index : number) : void {
         this.currentIndex = index;
         console.log('Boop ' + data.id)
-        this.router.navigate(["customer/get/" + data.id]);
+        window.location.href = HTTP_ROOT + "customer/get/" + data.id;
+        //this.router.navigate(["customer/get/" + data.id]);
     }
 
     customerAddress(data: any) : string {

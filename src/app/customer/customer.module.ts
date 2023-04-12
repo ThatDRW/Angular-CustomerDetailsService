@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CustomerRoutingModule } from './customer-routing.module';
@@ -10,6 +10,7 @@ import { FindCustomerComponent } from './components/find-customer/find-customer.
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreModule } from '../core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,6 +27,13 @@ import { CoreModule } from '../core/core.module';
     NgbModule,
     CoreModule,
     CustomerRoutingModule,
+    HttpClientModule
+  ],
+  exports: [
+    ListCustomersComponent,
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ]
 })
 export class CustomerModule { }

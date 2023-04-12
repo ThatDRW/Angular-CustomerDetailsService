@@ -5,6 +5,7 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { LogoutUserComponent } from './components/logout-user/logout-user.component';
 import { ProfileUserComponent } from './components/profile-user/profile-user.component';
 import { authGuard } from '../core/helpers/auth.guard';
+import { AuthGuardGuard } from '../core/helpers/auth-guard.guard';
 
 
 const oldroutes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [{
         { path: 'user/register', component: RegisterUserComponent },
         {
             path: 'user',
-            canActivateChild: [authGuard],
+            canActivateChild: [AuthGuardGuard],
             children: [
                 { path: 'profile', component: ProfileUserComponent },
             ]

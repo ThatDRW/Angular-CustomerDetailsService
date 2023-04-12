@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HTTP_ROOT } from 'src/app/href-constants.constants';
-import { TokenStorageService } from 'src/app/core/services/token-storage.service';
+import { HTTP_ROOT } from '../../../href-constants.constants';
+import { TokenStorageService } from '../../../core/services/token-storage.service';
 
 @Component({
   selector: 'app-logout-user',

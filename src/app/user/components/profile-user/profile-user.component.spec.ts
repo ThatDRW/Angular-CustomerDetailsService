@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileUserComponent } from './profile-user.component';
+import { TokenStorageService } from '../../../core/services/token-storage.service';
 
 describe('ProfileUserComponent', () => {
   let component: ProfileUserComponent;
@@ -8,7 +9,8 @@ describe('ProfileUserComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileUserComponent ]
+      declarations: [ ProfileUserComponent ],
+      providers: [ TokenStorageService ]
     })
     .compileComponents();
 
